@@ -4,9 +4,9 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import com.astek.asteksupport.MainActivity
-import com.astek.asteksupport.ManagerActivity
 import com.astek.asteksupport.R
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.readAndGoToPage
+import com.astek.asteksupport.utils.UIUtil.Companion.goToPage
 import com.astek.asteksupport.utils.UIUtil.Companion.showMessage
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -20,7 +20,8 @@ class AuthenticationUtil {
         private const val TAG = "AuthenticationUtil"
 
         var isManager : Boolean = false
-        var documentId: String = ""
+        var employeeDocumentId: String = ""
+        var managerDocumentId: String = ""
 
 
         private val fbAuth = FirebaseAuth.getInstance()
@@ -39,11 +40,11 @@ class AuthenticationUtil {
 
                                 if(document.get("mail") == fbAuth.currentUser?.email) {
                                     if(document.get("profilFunction") == "manager"){
+                                        managerDocumentId = document.id
                                         isManager = true
-                                        val intent = Intent(activity, ManagerActivity::class.java)
-                                        activity.startActivity(intent)
+                                        goToPage("-1", activity)
                                     } else {
-                                        documentId = document.id
+                                        employeeDocumentId = document.id
                                         isManager = false
                                         readAndGoToPage(activity)
                                     }

@@ -3,15 +3,14 @@ package com.astek.asteksupport
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.astek.asteksupport.utils.AuthenticationUtil.Companion.documentId
+import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeDocumentId
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.isManager
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.addValueInDataBase
-import com.astek.asteksupport.utils.DataBaseUtil.Companion.updatePageValue
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
 import com.astek.asteksupport.utils.UIUtil
 import com.astek.asteksupport.utils.UIUtil.Companion.goToPage
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_interview_context.*
 
@@ -27,40 +26,42 @@ class InterviewContextActivity : AppCompatActivity() {
 
         pageNumber.text = this.getString(R.string.pageNumber,"1","2")
 
-        nextArrowInterview.setOnClickListener{
+        nextArrow.setOnClickListener{
             if(bilanDateEditText.text.toString().isEmpty()
                 || previousInterviewEditText.text.toString().isEmpty()
                 || managerNameEditText.text.toString().isEmpty()
                 || interviewDateEditText.text.toString().isEmpty()) {
                 UIUtil.showMessage(it, this.getString(R.string.err_no_input))
             } else {
-                if(updateValue){
-                    updateValueInDataBase()
-                } else {
-                    createValueInDataBase()
-                }
-
+                createOrUpdate()
                 goToPage("2",this)
-
             }
         }
 
-        if(isManager){
-            backArrowInterview.visibility = View.VISIBLE
-            backArrowInterview.setOnClickListener{
-                onBackPressed()
+
+        backArrow.setOnClickListener{
+            createOrUpdate()
+            if(isManager) {
+                goToPage("-1", this)
+            } else {
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this,MainActivity::class.java)
+                startActivity(intent)
             }
-        } else {
-            backArrowInterview.visibility = View.GONE
         }
+
+        logout.setOnClickListener{
+            UIUtil.backToHome(this)
+        }
+
     }
 
     override fun onResume() {
         super.onResume()
-        retrieveBilanData()
+        retrieveInterviewData()
     }
 
-    private fun createValueInDataBase(){
+    private fun createValueInDB(){
         val interviewContext = hashMapOf(
             "bilanDate" to bilanDateEditText.text.toString(),
             "previousDate" to previousInterviewEditText.text.toString(),
@@ -71,7 +72,7 @@ class InterviewContextActivity : AppCompatActivity() {
         addValueInDataBase(interviewContext,"interviewContext")
     }
 
-    private fun updateValueInDataBase(){
+    private fun updateValueInDB(){
 
         val interviewContext = hashMapOf(
             "bilanDate" to bilanDateEditText.text.toString(),
@@ -84,10 +85,10 @@ class InterviewContextActivity : AppCompatActivity() {
     }
 
 
-    private fun retrieveBilanData(){
+    private fun retrieveInterviewData(){
         val db = FirebaseFirestore.getInstance()
 
-        db.collection("users").document(documentId)
+        db.collection("users").document(employeeDocumentId)
             .collection("interviewContext")
             .get()
             .addOnSuccessListener { result ->
@@ -112,6 +113,14 @@ class InterviewContextActivity : AppCompatActivity() {
                 Log.d(TAG, "Error getting documents.", exception)
             }
 
+    }
+
+    private fun createOrUpdate(){
+        if(updateValue){
+            updateValueInDB()
+        } else {
+            createValueInDB()
+        }
     }
 
 

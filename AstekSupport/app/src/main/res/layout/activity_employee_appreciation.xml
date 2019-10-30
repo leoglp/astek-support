@@ -7,10 +7,10 @@
 
 
     <TextView
-        android:id="@+id/titleBilanMission"
+        android:id="@+id/titleAppreciation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/titleBilanMission"
+        android:text="@string/titleEmployeeAppreciation"
         android:textSize="25sp"
         android:textAlignment="center"
         android:layout_marginTop="30dp"
@@ -18,36 +18,90 @@
         android:layout_marginStart="40dp"/>
 
 
-
     <TextView
-        android:id="@+id/bilanExplanation"
-        android:layout_below="@id/titleBilanMission"
-        android:textStyle="italic"
+        android:id="@+id/gain"
+        android:layout_below="@id/titleAppreciation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bilanMissionExplanation"
+        android:text="@string/gain"
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
-        android:textSize="15sp"/>
-
-
+        android:textSize="20sp"/>
 
     <EditText
-        android:id="@+id/explanationEditText"
+        android:id="@+id/gainEditText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/bilanExplanation"
+        android:layout_height="80dp"
+        android:layout_below="@+id/gain"
         android:background="@drawable/round_outline_enabled"
-        android:layout_above="@+id/pageLayout"
         android:layout_margin="15dp"
-        android:importantForAutofill="no"
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:overScrollMode="always"
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
         android:gravity="top|start"
+        android:importantForAutofill="no"
         tools:ignore="LabelFor"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        />
+
+    <TextView
+        android:id="@+id/weaknesses"
+        android:layout_below="@id/gainEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/weaknesses"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:id="@+id/weaknessesEditText"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/weaknesses"
+        android:background="@drawable/round_outline_enabled"
+        android:layout_margin="15dp"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:gravity="top|start"
+        android:importantForAutofill="no"
+        android:textAlignment="textStart"
+        tools:ignore="LabelFor"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        />
+
+    <TextView
+        android:id="@+id/improvement"
+        android:layout_below="@id/weaknessesEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pointsImprovement"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:id="@+id/improvementEditText"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_below="@+id/improvement"
+        android:background="@drawable/round_outline_enabled"
+        android:layout_margin="15dp"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:gravity="top|start"
+        android:importantForAutofill="no"
+        android:textAlignment="textStart"
+        tools:ignore="LabelFor"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         />
 
     <LinearLayout

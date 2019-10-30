@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.retrieveMailAddress
 import com.astek.asteksupport.utils.UIUtil
+import kotlinx.android.synthetic.main.activity_bilan_mission.*
 import kotlinx.android.synthetic.main.activity_manager.*
 
 class ManagerActivity : AppCompatActivity() {
@@ -22,6 +23,13 @@ class ManagerActivity : AppCompatActivity() {
                     it,
                     this)
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        logout.setOnClickListener{
+            UIUtil.backToHome(this)
         }
     }
 }

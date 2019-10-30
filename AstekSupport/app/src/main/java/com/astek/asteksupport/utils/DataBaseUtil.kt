@@ -2,13 +2,14 @@ package com.astek.asteksupport.utils
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Intent
 import android.util.Log
 import android.view.View
-import com.astek.asteksupport.InterviewContextActivity
 import com.astek.asteksupport.R
-import com.astek.asteksupport.utils.AuthenticationUtil.Companion.documentId
+import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeDocumentId
+import com.astek.asteksupport.utils.AuthenticationUtil.Companion.isManager
+import com.astek.asteksupport.utils.AuthenticationUtil.Companion.managerDocumentId
 import com.astek.asteksupport.utils.UIUtil.Companion.goToPage
+import com.astek.asteksupport.utils.UIUtil.Companion.showMessage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -27,14 +28,26 @@ class DataBaseUtil {
                 "page" to pageNumber
             )
 
-            db.collection("users").document(documentId)
-                .update(pageValue as Map<String, Any>)
-                .addOnSuccessListener {
-                    Log.d(TAG, "DocumentSnapshot updated")
-                }
-                .addOnFailureListener { e ->
-                    Log.d(TAG, "Error adding document", e)
-                }
+            if(isManager){
+                db.collection("users").document(managerDocumentId)
+                    .update(pageValue as Map<String, Any>)
+                    .addOnSuccessListener {
+                        Log.d(TAG, "DocumentSnapshot updated")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.d(TAG, "Error adding document", e)
+                    }
+            } else {
+                db.collection("users").document(employeeDocumentId)
+                    .update(pageValue as Map<String, Any>)
+                    .addOnSuccessListener {
+                        Log.d(TAG, "DocumentSnapshot updated")
+                    }
+                    .addOnFailureListener { e ->
+                        Log.d(TAG, "Error adding document", e)
+                    }
+            }
+
         }
 
         fun readAndGoToPage(activity: Activity) {
@@ -69,15 +82,14 @@ class DataBaseUtil {
                         if(nameInsensitive == nameEditInsensitive
                             && surnameInsensitive == surnameEditInsensitive) {
                             emailAddress = document.get("mail").toString()
-                            documentId = document.id
+                            employeeDocumentId = document.id
                         }
                     }
 
                     if(emailAddress != "") {
-                        val intent = Intent(activity, InterviewContextActivity::class.java)
-                        activity.startActivity(intent)
+                        goToPage("1", activity)
                     } else {
-                        UIUtil.showMessage(view, activity.getString(R.string.err_no_person))
+                        showMessage(view, activity.getString(R.string.err_no_person))
                     }
                 }
                 .addOnFailureListener { exception ->
@@ -87,7 +99,7 @@ class DataBaseUtil {
 
 
         fun updateValueInDataBase(valueToUpdate: HashMap<String,String> , collectionToUpdate: String , documentUpdateId: String){
-            db.collection("users").document(documentId)
+            db.collection("users").document(employeeDocumentId)
                 .collection(collectionToUpdate).document(documentUpdateId)
                 .update(valueToUpdate as Map<String, Any>)
                 .addOnSuccessListener {
@@ -100,7 +112,7 @@ class DataBaseUtil {
 
         fun addValueInDataBase(valueToAdd: HashMap<String,String> , collectionToCreate: String){
             db.collection("users")
-                .document(documentId)
+                .document(employeeDocumentId)
                 .collection(collectionToCreate)
                 .add(valueToAdd)
                 .addOnSuccessListener { documentReference ->

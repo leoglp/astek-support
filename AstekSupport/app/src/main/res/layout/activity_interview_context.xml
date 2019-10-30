@@ -125,7 +125,7 @@
         android:layout_centerHorizontal="true">
 
         <Button
-            android:id="@+id/backArrowInterview"
+            android:id="@+id/backArrow"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/ic_left_arrow"/>
@@ -138,12 +138,23 @@
             android:textSize="15sp"/>
 
         <Button
-            android:id="@+id/nextArrowInterview"
+            android:id="@+id/nextArrow"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="15dp"
             android:background="@drawable/ic_right_arrow"/>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/logout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_logout"
+        android:layout_toEndOf="@id/pageLayout"
+        android:layout_alignBottom="@id/pageLayout"
+        android:layout_marginStart="60dp"
+        android:clickable="true"
+        android:focusable="true"/>
 
 </RelativeLayout>

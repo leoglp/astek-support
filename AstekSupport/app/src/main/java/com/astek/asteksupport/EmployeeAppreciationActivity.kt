@@ -7,40 +7,41 @@ import com.astek.asteksupport.utils.AuthenticationUtil
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.addValueInDataBase
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
 import com.astek.asteksupport.utils.UIUtil
-import com.astek.asteksupport.utils.UIUtil.Companion.backToHome
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_bilan_mission.*
+import kotlinx.android.synthetic.main.activity_employee_appreciation.*
 
-class BilanMissionActivity : AppCompatActivity() {
+class EmployeeAppreciationActivity : AppCompatActivity() {
 
     private var updateValue = false
     private var documentUpdateId = ""
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bilan_mission)
+        setContentView(R.layout.activity_employee_appreciation)
 
-        pageNumber.text = this.getString(R.string.pageNumber,"2","2")
+        pageNumber.text = this.getString(R.string.pageNumber,"3","3")
 
         nextArrow.setOnClickListener{
-            if(explanationEditText.text.toString().isEmpty()) {
+            if(gainEditText.text.toString().isEmpty()
+                || weaknessesEditText.text.toString().isEmpty()
+                || improvementEditText.text.toString().isEmpty()) {
                 UIUtil.showMessage(it, this.getString(R.string.err_no_input))
             } else {
                 createOrUpdate()
-                UIUtil.goToPage("3", this)
+                UIUtil.goToPage("4", this)
             }
         }
 
         backArrow.setOnClickListener{
             createOrUpdate()
-            UIUtil.goToPage("1", this)
+            UIUtil.goToPage("2", this)
         }
 
         logout.setOnClickListener{
-            backToHome(this)
+            UIUtil.backToHome(this)
         }
     }
-
 
     override fun onResume() {
         super.onResume()
@@ -48,32 +49,42 @@ class BilanMissionActivity : AppCompatActivity() {
     }
 
     private fun createValueInDB(){
-        val bilanMission = hashMapOf(
-            "bilanMission" to explanationEditText.text.toString()
+        val employeeAppreciation = hashMapOf(
+            "gain" to gainEditText.text.toString(),
+            "weaknesses" to weaknessesEditText.text.toString(),
+            "improvement" to improvementEditText.text.toString()
         )
 
-        addValueInDataBase(bilanMission, "bilanMission")
+        addValueInDataBase(employeeAppreciation, "employeeAppreciation")
     }
 
     private fun updateValueInDB(){
 
-        val bilanMission = hashMapOf(
-            "bilanMission" to explanationEditText.text.toString()
+        val employeeAppreciation = hashMapOf(
+            "gain" to gainEditText.text.toString(),
+            "weaknesses" to weaknessesEditText.text.toString(),
+            "improvement" to improvementEditText.text.toString()
         )
 
-        updateValueInDataBase(bilanMission, "bilanMission", documentUpdateId)
+        updateValueInDataBase(employeeAppreciation, "employeeAppreciation", documentUpdateId)
     }
 
     private fun retrieveBilanData(){
         val db = FirebaseFirestore.getInstance()
 
         db.collection("users").document(AuthenticationUtil.employeeDocumentId)
-            .collection("bilanMission")
+            .collection("employeeAppreciation")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    if (document.get("bilanMission") != null) {
-                        explanationEditText.setText(document.get("bilanMission").toString())
+                    if (document.get("gain") != null) {
+                        gainEditText.setText(document.get("gain").toString())
+                    }
+                    if (document.get("weaknesses") != null) {
+                        weaknessesEditText.setText(document.get("weaknesses").toString())
+                    }
+                    if (document.get("improvement") != null) {
+                        improvementEditText.setText(document.get("improvement").toString())
                     }
                     updateValue = true
                     documentUpdateId = document.id
@@ -93,7 +104,7 @@ class BilanMissionActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "BilanMission"
+        private const val TAG = "EmployeeAppreciation"
     }
 
 }

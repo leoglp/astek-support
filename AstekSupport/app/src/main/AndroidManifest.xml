@@ -26,6 +26,8 @@
         <activity android:name=".ManagerActivity"/>
         <activity android:name=".InterviewContextActivity"/>
         <activity android:name=".BilanMissionActivity"/>
+        <activity android:name=".EmployeeAppreciationActivity"/>
+        <activity android:name=".ManagerAppreciationActivity"/>
     </application>
 
 </manifest>

@@ -47,4 +47,13 @@
 
     <!-- PageInfo -->
     <string name="pageNumber">Page %1$s / %2$s</string>
+
+    <!-- Appreciation -->
+    <string name="titleEmployeeAppreciation">Appréciations du salarié sur les réalisations de l\'année</string>
+    <string name="titleManagerAppreciation">Appréciations du manager sur les réalisations de l\'année</string>
+    <string name="gain">Apports</string>
+    <string name="weaknesses">Points faibles</string>
+    <string name="pointsImprovement">Points à améliorer</string>
+
+
 </resources>
