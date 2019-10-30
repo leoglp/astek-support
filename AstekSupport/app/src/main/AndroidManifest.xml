@@ -21,6 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ProfilCreationActivity"/>
+        <activity android:name=".ManagerActivity"/>
+        <activity android:name=".InterviewContextActivity"/>
+        <activity android:name=".BilanMissionActivity"/>
     </application>
 
 </manifest>

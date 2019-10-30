@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/titleBilanMission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titleBilanMission"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"/>
+
+
+
+    <TextView
+        android:id="@+id/bilanExplanation"
+        android:layout_below="@id/titleBilanMission"
+        android:textStyle="italic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bilanMissionExplanation"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:textSize="15sp"/>
+
+
+
+    <EditText
+        android:id="@+id/explanationEditText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/bilanExplanation"
+        android:background="@drawable/round_outline"
+        android:layout_above="@+id/pageLayout"
+        android:layout_margin="15dp"
+        android:inputType="textCapSentences"
+        android:importantForAutofill="no"
+        tools:ignore="LabelFor" />
+
+    <LinearLayout
+        android:id="@+id/pageLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_left_arrow"/>
+
+        <TextView
+            android:id="@+id/pageNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:textSize="15sp"/>
+
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/ic_right_arrow"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
