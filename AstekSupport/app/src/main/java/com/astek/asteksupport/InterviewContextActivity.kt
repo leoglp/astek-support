@@ -3,13 +3,23 @@ package com.astek.asteksupport
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.documentId
-import com.astek.asteksupport.utils.ShowUtil
+import com.astek.asteksupport.utils.AuthenticationUtil.Companion.isManager
+import com.astek.asteksupport.utils.DataBaseUtil.Companion.addValueInDataBase
+import com.astek.asteksupport.utils.DataBaseUtil.Companion.updatePageValue
+import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
+import com.astek.asteksupport.utils.UIUtil
+import com.astek.asteksupport.utils.UIUtil.Companion.goToPage
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_interview_context.*
 
 class InterviewContextActivity : AppCompatActivity() {
+
+
+    private var updateValue = false
+    private var documentUpdateId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,17 +27,31 @@ class InterviewContextActivity : AppCompatActivity() {
 
         pageNumber.text = this.getString(R.string.pageNumber,"1","2")
 
-        nextArrow.setOnClickListener{
+        nextArrowInterview.setOnClickListener{
             if(bilanDateEditText.text.toString().isEmpty()
                 || previousInterviewEditText.text.toString().isEmpty()
                 || managerNameEditText.text.toString().isEmpty()
                 || interviewDateEditText.text.toString().isEmpty()) {
-                ShowUtil.showMessage(it, this.getString(R.string.err_no_input))
+                UIUtil.showMessage(it, this.getString(R.string.err_no_input))
             } else {
-                saveValueInDataBase()
-                val intent = Intent(this,BilanMissionActivity::class.java)
-                startActivity(intent)
+                if(updateValue){
+                    updateValueInDataBase()
+                } else {
+                    createValueInDataBase()
+                }
+
+                goToPage("2",this)
+
             }
+        }
+
+        if(isManager){
+            backArrowInterview.visibility = View.VISIBLE
+            backArrowInterview.setOnClickListener{
+                onBackPressed()
+            }
+        } else {
+            backArrowInterview.visibility = View.GONE
         }
     }
 
@@ -36,7 +60,7 @@ class InterviewContextActivity : AppCompatActivity() {
         retrieveBilanData()
     }
 
-    private fun saveValueInDataBase(){
+    private fun createValueInDataBase(){
         val interviewContext = hashMapOf(
             "bilanDate" to bilanDateEditText.text.toString(),
             "previousDate" to previousInterviewEditText.text.toString(),
@@ -44,18 +68,19 @@ class InterviewContextActivity : AppCompatActivity() {
             "managerName" to managerNameEditText.text.toString()
         )
 
-        // Add a new document with a generated ID
-        val db = FirebaseFirestore.getInstance()
+        addValueInDataBase(interviewContext,"interviewContext")
+    }
 
-        db.collection("users").document(documentId)
-            .collection("interviewContext")
-            .add(interviewContext)
-            .addOnSuccessListener { documentReference ->
-                Log.d("TITI", "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.d("TITI", "Error adding document", e)
-            }
+    private fun updateValueInDataBase(){
+
+        val interviewContext = hashMapOf(
+            "bilanDate" to bilanDateEditText.text.toString(),
+            "previousDate" to previousInterviewEditText.text.toString(),
+            "interviewDate" to interviewDateEditText.text.toString(),
+            "managerName" to managerNameEditText.text.toString()
+        )
+
+        updateValueInDataBase(interviewContext,"interviewContext",documentUpdateId)
     }
 
 
@@ -67,14 +92,8 @@ class InterviewContextActivity : AppCompatActivity() {
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    Log.d("TITI", "document bilanDate ${document.get("bilanDate")}")
-                    Log.d("TITI", "document previousDate ${document.get("previousDate")}")
-                    Log.d("TITI", "document interviewDate ${document.get("interviewDate")}")
-                    Log.d("TITI", "document managerName ${document.get("managerName")}")
-
-
                     if (document.get("bilanDate") != null) {
-                            bilanDateEditText.setText(document.get("bilanDate").toString())
+                        bilanDateEditText.setText(document.get("bilanDate").toString())
                     }
                     if (document.get("previousDate") != null) {
                         previousInterviewEditText.setText(document.get("previousDate").toString())
@@ -85,11 +104,19 @@ class InterviewContextActivity : AppCompatActivity() {
                     if (document.get("managerName") != null) {
                         managerNameEditText.setText(document.get("managerName").toString())
                     }
+                    updateValue = true
+                    documentUpdateId = document.id
                 }
             }
             .addOnFailureListener { exception ->
-                Log.d("TITI", "Error getting documents.", exception)
+                Log.d(TAG, "Error getting documents.", exception)
             }
 
     }
+
+
+    companion object {
+        private const val TAG = "InterviewContext"
+    }
+
 }

@@ -3,11 +3,11 @@ package com.astek.asteksupport.utils
 import android.app.Activity
 import android.content.Intent
 import android.view.View
-import com.astek.asteksupport.InterviewContextActivity
 import com.astek.asteksupport.MainActivity
 import com.astek.asteksupport.ManagerActivity
 import com.astek.asteksupport.R
-import com.astek.asteksupport.utils.ShowUtil.Companion.showMessage
+import com.astek.asteksupport.utils.DataBaseUtil.Companion.readAndGoToPage
+import com.astek.asteksupport.utils.UIUtil.Companion.showMessage
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -16,6 +16,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 class AuthenticationUtil {
 
     companion object {
+
+        private const val TAG = "AuthenticationUtil"
 
         var isManager : Boolean = false
         var documentId: String = ""
@@ -29,7 +31,6 @@ class AuthenticationUtil {
             fbAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(activity) { task ->
                 if(task.isSuccessful) {
                     val db = FirebaseFirestore.getInstance()
-                    var intent : Intent?
 
                     db.collection("users")
                         .get()
@@ -39,18 +40,18 @@ class AuthenticationUtil {
                                 if(document.get("mail") == fbAuth.currentUser?.email) {
                                     if(document.get("profilFunction") == "manager"){
                                         isManager = true
-                                        intent = Intent(activity, ManagerActivity::class.java)
+                                        val intent = Intent(activity, ManagerActivity::class.java)
+                                        activity.startActivity(intent)
                                     } else {
                                         documentId = document.id
                                         isManager = false
-                                        intent = Intent(activity, InterviewContextActivity::class.java)
+                                        readAndGoToPage(activity)
                                     }
-                                    activity.startActivity(intent)
                                 }
                             }
                         }
                         .addOnFailureListener { exception ->
-                            android.util.Log.d("TITI", "Error getting documents.", exception)
+                            android.util.Log.d(TAG, "Error getting documents.", exception)
                         }
 
                 } else {
