@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Astek Support</string>
+
+    <!-- HomePage -->
+    <string name="mail">Adresse mail</string>
+    <string name="password">Mot de passe</string>
+    <string name="connect">connexion</string>
+    <string name="subscribe">Pas encore inscrit ?</string>
+
+    <!-- ProfilCreation -->
+    <string name="question_who">Vous êtes :</string>
+    <string name="manager">MANAGER</string>
+    <string name="salarie">SALARIE</string>
+    <string name="name">Nom</string>
+    <string name="surname">Prénom</string>
+    <string name="society">Société</string>
+    <string name="birthDate">Date de naissance</string>
+    <string name="enterDate">Date d\'entrée chez Astek</string>
+    <string name="experiment">Nombre d\'années d\'experience totale</string>
+    <string name="function">Fonction</string>
+    <string name="diplom">Diplôme / Ecole</string>
+    <string name="obtentionDate">Date d\'obtention</string>
+    <string name="profilCreation">Créer le profil</string>
+
+    <!-- Manager -->
+    <string name="salaryInformation">Veuillez saisir les informations du salarié :</string>
+    <string name="validate">Valider</string>
+
+    <!-- Show Indication -->
+    <string name="authentication">Authentification…</string>
+    <string name="creation">Création du profil…</string>
+    <string name="err_no_input">Veuillez remplir tous les champs.</string>
+    <string name="err_no_person">Aucune personne de ce nom n\'a été trouvée.</string>
+
+    <!-- InterviewContext -->
+    <string name="titleInterviewContext">Cadre de l\'entretien</string>
+    <string name="bilanDate">Année du bilan</string>
+    <string name="previousInterview">Date de l\'entretien N-1</string>
+    <string name="interviewDate">Date de l\'entretien N</string>
+    <string name="managerName">Nom du manager</string>
+
+    <!-- BilanMission -->
+    <string name="titleBilanMission">Bilan des missions / Projets de l\'année écoulée</string>
+    <string name="bilanMissionExplanation">Décrire succinctement les activités confiées,
+        les compétences mises en œuvre et les résultats obtenus (Client, Période, Rôle occupé,
+        Responsabilité, Environnement Technique et Fonctionnel)</string>
+
+    <!-- PageInfo -->
+    <string name="pageNumber">Page %1$s / %2$s</string>
+</resources>
