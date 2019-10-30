@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/titleTargetEvaluation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titleTargetEvaluation"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"/>
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleTargetEvaluation"
+        android:layout_above="@id/addTargetLayout"
+        android:layout_marginBottom="15dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/target1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/target1"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/target1EditText"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/target1"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+            <TextView
+                android:id="@+id/result1"
+                android:layout_below="@id/target1EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/result"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/result1EditText"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/result1"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+
+
+
+            <TextView
+                android:id="@+id/target2"
+                android:layout_below="@id/result1EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/target1"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:visibility="gone"/>
+
+            <EditText
+                android:id="@+id/target2EditText"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/target2"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/result2"
+                android:layout_below="@id/target2EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/result"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:visibility="gone"/>
+
+            <EditText
+                android:id="@+id/result2EditText"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/result2"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="gone"
+                />
+
+
+
+
+            <TextView
+                android:id="@+id/target3"
+                android:layout_below="@id/result2EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/target1"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:visibility="gone"/>
+
+            <EditText
+                android:id="@+id/target3EditText"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/target3"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/result3"
+                android:layout_below="@id/target3EditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/result"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:textSize="20sp"
+                android:visibility="gone"/>
+
+            <EditText
+                android:id="@+id/result3EditText"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@+id/result3"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="gone"
+                />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/addTargetLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/pageLayout"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/deleteTarget"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ic_delete"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/addTarget"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_add"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pageLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/backArrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_left_arrow"/>
+
+        <TextView
+            android:id="@+id/pageNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/nextArrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/ic_right_arrow"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/logout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_logout"
+        android:layout_toEndOf="@id/pageLayout"
+        android:layout_alignBottom="@id/pageLayout"
+        android:layout_marginStart="60dp"
+        android:clickable="true"
+        android:focusable="true"/>
+
+
+</RelativeLayout>

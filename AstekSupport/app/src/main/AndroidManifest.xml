@@ -28,6 +28,7 @@
         <activity android:name=".BilanMissionActivity"/>
         <activity android:name=".EmployeeAppreciationActivity"/>
         <activity android:name=".ManagerAppreciationActivity"/>
+        <activity android:name=".TargetEvaluationActivity"/>
     </application>
 
 </manifest>

@@ -55,5 +55,13 @@
     <string name="weaknesses">Points faibles</string>
     <string name="pointsImprovement">Points à améliorer</string>
 
+    <!-- Target -->
+    <string name="titleTargetEvaluation">Evaluations des objectifs fixes EAE année N-1</string>
+    <string name="target1">Rappel de l\'objectif 1</string>
+    <string name="result">Résultat</string>
+    <string name="targetDynamic">Rappel de l\'objectif %1$s</string>
+    <string name="newTarget">Ajouter un autre objectif</string>
+
+
 
 </resources>

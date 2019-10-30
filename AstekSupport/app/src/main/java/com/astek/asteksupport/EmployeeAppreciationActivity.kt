@@ -20,7 +20,7 @@ class EmployeeAppreciationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_employee_appreciation)
 
-        pageNumber.text = this.getString(R.string.pageNumber,"3","3")
+        pageNumber.text = this.getString(R.string.pageNumber,"3","5")
 
         nextArrow.setOnClickListener{
             if(gainEditText.text.toString().isEmpty()
@@ -45,7 +45,7 @@ class EmployeeAppreciationActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        retrieveBilanData()
+        retrieveData()
     }
 
     private fun createValueInDB(){
@@ -69,7 +69,7 @@ class EmployeeAppreciationActivity : AppCompatActivity() {
         updateValueInDataBase(employeeAppreciation, "employeeAppreciation", documentUpdateId)
     }
 
-    private fun retrieveBilanData(){
+    private fun retrieveData(){
         val db = FirebaseFirestore.getInstance()
 
         db.collection("users").document(AuthenticationUtil.employeeDocumentId)

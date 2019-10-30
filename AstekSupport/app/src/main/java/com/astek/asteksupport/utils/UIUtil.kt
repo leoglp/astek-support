@@ -33,7 +33,7 @@ class UIUtil {
                 "2" -> intent = Intent(activity,BilanMissionActivity::class.java)
                 "3" -> intent = Intent(activity,EmployeeAppreciationActivity::class.java)
                 "4" -> intent = Intent(activity,ManagerAppreciationActivity::class.java)
-                "5" -> intent = Intent(activity,InterviewContextActivity::class.java)
+                "5" -> intent = Intent(activity,TargetEvaluationActivity::class.java)
                 "6" -> intent = Intent(activity,InterviewContextActivity::class.java)
             }
             activity.startActivity(intent)

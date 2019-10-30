@@ -21,7 +21,7 @@ class ManagerAppreciationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_manager_appreciation)
 
-        pageNumber.text = this.getString(R.string.pageNumber,"3","3")
+        pageNumber.text = this.getString(R.string.pageNumber,"4","5")
 
         if(!isManager) {
             gainEditText.isEnabled = false
@@ -56,7 +56,7 @@ class ManagerAppreciationActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        retrieveBilanData()
+        retrieveData()
     }
 
     private fun createValueInDB(){
@@ -80,7 +80,7 @@ class ManagerAppreciationActivity : AppCompatActivity() {
         updateValueInDataBase(appreciation, "managerAppreciation", documentUpdateId)
     }
 
-    private fun retrieveBilanData(){
+    private fun retrieveData(){
         val db = FirebaseFirestore.getInstance()
 
         db.collection("users").document(AuthenticationUtil.employeeDocumentId)
@@ -115,7 +115,7 @@ class ManagerAppreciationActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "Appreciation"
+        private const val TAG = "ManagerAppreciation"
     }
 
 }

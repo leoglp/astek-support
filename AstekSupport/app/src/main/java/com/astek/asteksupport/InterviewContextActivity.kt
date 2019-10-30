@@ -24,7 +24,7 @@ class InterviewContextActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_interview_context)
 
-        pageNumber.text = this.getString(R.string.pageNumber,"1","2")
+        pageNumber.text = this.getString(R.string.pageNumber,"1","5")
 
         nextArrow.setOnClickListener{
             if(bilanDateEditText.text.toString().isEmpty()
@@ -58,7 +58,7 @@ class InterviewContextActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        retrieveInterviewData()
+        retrieveData()
     }
 
     private fun createValueInDB(){
@@ -85,7 +85,7 @@ class InterviewContextActivity : AppCompatActivity() {
     }
 
 
-    private fun retrieveInterviewData(){
+    private fun retrieveData(){
         val db = FirebaseFirestore.getInstance()
 
         db.collection("users").document(employeeDocumentId)

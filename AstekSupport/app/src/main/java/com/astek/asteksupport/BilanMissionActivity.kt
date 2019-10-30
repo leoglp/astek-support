@@ -20,7 +20,7 @@ class BilanMissionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bilan_mission)
 
-        pageNumber.text = this.getString(R.string.pageNumber,"2","2")
+        pageNumber.text = this.getString(R.string.pageNumber,"2","5")
 
         nextArrow.setOnClickListener{
             if(explanationEditText.text.toString().isEmpty()) {
@@ -44,7 +44,7 @@ class BilanMissionActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        retrieveBilanData()
+        retrieveData()
     }
 
     private fun createValueInDB(){
@@ -64,7 +64,7 @@ class BilanMissionActivity : AppCompatActivity() {
         updateValueInDataBase(bilanMission, "bilanMission", documentUpdateId)
     }
 
-    private fun retrieveBilanData(){
+    private fun retrieveData(){
         val db = FirebaseFirestore.getInstance()
 
         db.collection("users").document(AuthenticationUtil.employeeDocumentId)
