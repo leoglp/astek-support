@@ -9,7 +9,8 @@ import com.astek.asteksupport.utils.DataBaseUtil.Companion.addValueInDataBase
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
 import com.astek.asteksupport.utils.UIUtil
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_manager_appreciation.*
+import kotlinx.android.synthetic.main.appreciation_layout.*
+import kotlinx.android.synthetic.main.page_layout.*
 
 class ManagerAppreciationActivity : AppCompatActivity() {
 
@@ -34,12 +35,17 @@ class ManagerAppreciationActivity : AppCompatActivity() {
         }
 
         nextArrow.setOnClickListener{
-            if(gainEditText.text.toString().isEmpty()
-                || weaknessesEditText.text.toString().isEmpty()
-                || improvementEditText.text.toString().isEmpty()) {
-                UIUtil.showMessage(it, this.getString(R.string.err_no_input))
+
+            if(isManager) {
+                if(gainEditText.text.toString().isEmpty()
+                    || weaknessesEditText.text.toString().isEmpty()
+                    || improvementEditText.text.toString().isEmpty()) {
+                    UIUtil.showMessage(it, this.getString(R.string.err_no_input))
+                } else {
+                    createOrUpdate()
+                    UIUtil.goToPage("5", this)
+                }
             } else {
-                createOrUpdate()
                 UIUtil.goToPage("5", this)
             }
         }

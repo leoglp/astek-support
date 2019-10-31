@@ -6,6 +6,7 @@ import com.astek.asteksupport.utils.DataBaseUtil.Companion.retrieveMailAddress
 import com.astek.asteksupport.utils.UIUtil
 import kotlinx.android.synthetic.main.activity_bilan_mission.*
 import kotlinx.android.synthetic.main.activity_manager.*
+import kotlinx.android.synthetic.main.page_layout.*
 
 class ManagerActivity : AppCompatActivity() {
 

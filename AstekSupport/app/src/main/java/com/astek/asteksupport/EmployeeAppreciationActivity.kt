@@ -8,7 +8,8 @@ import com.astek.asteksupport.utils.DataBaseUtil.Companion.addValueInDataBase
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
 import com.astek.asteksupport.utils.UIUtil
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_employee_appreciation.*
+import kotlinx.android.synthetic.main.appreciation_layout.*
+import kotlinx.android.synthetic.main.page_layout.*
 
 class EmployeeAppreciationActivity : AppCompatActivity() {
 

@@ -30,7 +30,9 @@
     <string name="authentication">Authentification…</string>
     <string name="creation">Création du profil…</string>
     <string name="err_no_input">Veuillez remplir tous les champs.</string>
+    <string name="err_no_checked">Veuillez cocher une valeur.</string>
     <string name="err_no_person">Aucune personne de ce nom n\'a été trouvée.</string>
+    <string name="graduationInfo">1- Très Satisfaisant / 2 - Satisfaisant / 3 - Moyen / 4 – Insuffisant</string>
 
     <!-- InterviewContext -->
     <string name="titleInterviewContext">Cadre de l\'entretien</string>
@@ -49,18 +51,51 @@
     <string name="pageNumber">Page %1$s / %2$s</string>
 
     <!-- Appreciation -->
-    <string name="titleEmployeeAppreciation">Appréciations du salarié sur les réalisations de l\'année</string>
-    <string name="titleManagerAppreciation">Appréciations du manager sur les réalisations de l\'année</string>
+    <string name="titleEmployeeAppreciation">Appréciation du salarié sur les réalisations de l\'année</string>
+    <string name="titleManagerAppreciation">Appréciation du manager sur les réalisations de l\'année</string>
     <string name="gain">Apports</string>
     <string name="weaknesses">Points faibles</string>
     <string name="pointsImprovement">Points à améliorer</string>
 
     <!-- Target -->
-    <string name="titleTargetEvaluation">Evaluations des objectifs fixes EAE année N-1</string>
+    <string name="titleTargetEvaluation">Evaluation des objectifs fixes EAE année N-1</string>
     <string name="target1">Rappel de l\'objectif 1</string>
     <string name="result">Résultat</string>
     <string name="targetDynamic">Rappel de l\'objectif %1$s</string>
-    <string name="newTarget">Ajouter un autre objectif</string>
+
+    <!-- SkillEvaluation -->
+    <string name="titleSkillEvaluation">Evaluation de la Performance du Salarié Année N (par le Manager)</string>
+    <string name="verySatisfying">A - Très Satisfaisant</string>
+    <string name="satisfying">B - Satisfaisant</string>
+    <string name="medium">C - Moyen</string>
+    <string name="insufficient">D - Insuffisant</string>
+
+    <!-- Skill -->
+    <string name="titleTechnicalSkill">Evaluation des compétences techniques</string>
+    <string name="titleProfessionSkill">Evaluation des compétences métiers</string>
+    <string name="titleFunctionalSkill">Evaluation des compétences fonctionnelles</string>
+    <string name="titleManagerialSkill">Evaluation des compétences manageriales</string>
+    <string name="titleBehaviouralSkill">Evaluation des compétences comportementales</string>
+    <string name="titleLinguisticSkill">Evaluation des compétences linguistiques</string>
+    <string name="skill1">Compétence n°1</string>
+    <string name="employeeGraduation">Notation Salarié</string>
+    <string name="managerGraduation">Notation Manager</string>
+    <string name="skillExample">Exemples concrets - Commentaires </string>
+    <string name="improvementAndGain">Points forts / A améliorer </string>
+    <string name="skillDynamic">Compétence n°%1$s</string>
+    <string name="skillAutonomy">Autonomie</string>
+    <string name="skillAdaptability">Adaptabilité</string>
+    <string name="skillTeamWork">Travail en équipe</string>
+    <string name="skillCreativity">Créativité, Force de proposition</string>
+    <string name="skillCommunication">Communication (écrite, orale, écoute, empathie)</string>
+    <string name="skillImplication">Implication Astek</string>
+    <string name="skillRespect">Maîtrise de soi, Respect</string>
+    <string name="skillRigour">Rigueur, Organisation, Assiduité</string>
+    <string name="skillEnglish">Anglais</string>
+    <string name="skillOther">Autre langue</string>
+
+
+
 
 
 

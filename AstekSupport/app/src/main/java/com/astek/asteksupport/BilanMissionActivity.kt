@@ -10,6 +10,7 @@ import com.astek.asteksupport.utils.UIUtil
 import com.astek.asteksupport.utils.UIUtil.Companion.backToHome
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_bilan_mission.*
+import kotlinx.android.synthetic.main.page_layout.*
 
 class BilanMissionActivity : AppCompatActivity() {
 

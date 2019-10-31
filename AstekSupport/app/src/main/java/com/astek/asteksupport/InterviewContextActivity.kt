@@ -13,9 +13,9 @@ import com.astek.asteksupport.utils.UIUtil.Companion.goToPage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_interview_context.*
+import kotlinx.android.synthetic.main.page_layout.*
 
 class InterviewContextActivity : AppCompatActivity() {
-
 
     private var updateValue = false
     private var documentUpdateId = ""

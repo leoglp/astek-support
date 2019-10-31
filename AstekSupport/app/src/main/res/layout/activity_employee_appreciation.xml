@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
-        android:id="@+id/titleAppreciation"
+        android:id="@+id/titleEmployeeAppreciation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/titleEmployeeAppreciation"
@@ -17,132 +15,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="40dp"/>
 
-
-    <TextView
-        android:id="@+id/gain"
-        android:layout_below="@id/titleAppreciation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/gain"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:textSize="20sp"/>
-
-    <EditText
-        android:id="@+id/gainEditText"
+    <include
+        layout="@layout/appreciation_layout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_below="@+id/gain"
-        android:background="@drawable/round_outline_enabled"
-        android:layout_margin="15dp"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        android:overScrollMode="always"
-        android:scrollbarStyle="insideInset"
-        android:scrollbars="vertical"
-        android:gravity="top|start"
-        android:importantForAutofill="no"
-        tools:ignore="LabelFor"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        />
-
-    <TextView
-        android:id="@+id/weaknesses"
-        android:layout_below="@id/gainEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weaknesses"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"/>
-
-    <EditText
-        android:id="@+id/weaknessesEditText"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_below="@+id/weaknesses"
-        android:background="@drawable/round_outline_enabled"
-        android:layout_margin="15dp"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        android:overScrollMode="always"
-        android:scrollbarStyle="insideInset"
-        android:scrollbars="vertical"
-        android:gravity="top|start"
-        android:importantForAutofill="no"
-        android:textAlignment="textStart"
-        tools:ignore="LabelFor"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        />
-
-    <TextView
-        android:id="@+id/improvement"
-        android:layout_below="@id/weaknessesEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pointsImprovement"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"/>
-
-    <EditText
-        android:id="@+id/improvementEditText"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_below="@+id/improvement"
-        android:background="@drawable/round_outline_enabled"
-        android:layout_margin="15dp"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        android:overScrollMode="always"
-        android:scrollbarStyle="insideInset"
-        android:scrollbars="vertical"
-        android:gravity="top|start"
-        android:importantForAutofill="no"
-        android:textAlignment="textStart"
-        tools:ignore="LabelFor"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        />
-
-    <LinearLayout
-        android:id="@+id/pageLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:layout_centerHorizontal="true">
-
-        <Button
-            android:id="@+id/backArrow"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/ic_left_arrow"/>
-
-        <TextView
-            android:id="@+id/pageNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:textSize="15sp"/>
-
-        <Button
-            android:id="@+id/nextArrow"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="15dp"
-            android:background="@drawable/ic_right_arrow"/>
-
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/logout"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/ic_logout"
-        android:layout_toEndOf="@id/pageLayout"
-        android:layout_alignBottom="@id/pageLayout"
-        android:layout_marginStart="60dp"
-        android:clickable="true"
-        android:focusable="true"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/titleEmployeeAppreciation"
+        >
+    </include>
 
 </RelativeLayout>
