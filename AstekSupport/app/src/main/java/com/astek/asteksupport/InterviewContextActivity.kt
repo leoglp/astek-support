@@ -9,6 +9,8 @@ import com.astek.asteksupport.utils.AuthenticationUtil.Companion.isManager
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.addValueInDataBase
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
 import com.astek.asteksupport.utils.UIUtil
+import com.astek.asteksupport.utils.UIUtil.Companion.getPage
+import com.astek.asteksupport.utils.UIUtil.Companion.getTotalPage
 import com.astek.asteksupport.utils.UIUtil.Companion.goToPage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -24,7 +26,9 @@ class InterviewContextActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_interview_context)
 
-        pageNumber.text = this.getString(R.string.pageNumber,"1","5")
+        pageNumber.text = this.getString(R.string.pageNumber, getPage(this, this.javaClass.simpleName).toString(),
+            getTotalPage(this))
+
 
         nextArrow.setOnClickListener{
             if(bilanDateEditText.text.toString().isEmpty()
@@ -34,7 +38,7 @@ class InterviewContextActivity : AppCompatActivity() {
                 UIUtil.showMessage(it, this.getString(R.string.err_no_input))
             } else {
                 createOrUpdate()
-                goToPage("2",this)
+                UIUtil.goToNextPage(this, this.javaClass.simpleName)
             }
         }
 

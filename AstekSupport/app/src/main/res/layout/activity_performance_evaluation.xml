@@ -9,7 +9,7 @@
         android:id="@+id/titleSkillEvaluation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/titleSkillEvaluation"
+        android:text="@string/titlePerformanceEvaluation"
         android:textSize="25sp"
         android:textAlignment="center"
         android:layout_marginTop="30dp"
@@ -29,8 +29,8 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/expertise"
-            android:id="@+id/answerARadioButton"
+            android:text="@string/verySatisfying"
+            android:id="@+id/verySatisfyingRadioButton"
             android:layout_marginTop="100dp"
             android:textSize="20sp"
             />
@@ -39,8 +39,8 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/autonomousCapacity"
-            android:id="@+id/answerBRadioButton"
+            android:text="@string/satisfying"
+            android:id="@+id/satisfyingRadioButton"
             android:layout_marginTop="40dp"
             android:textSize="20sp"
             />
@@ -48,8 +48,8 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/partialCapacity"
-            android:id="@+id/answerCRadioButton"
+            android:text="@string/medium"
+            android:id="@+id/mediumRadioButton"
             android:layout_marginTop="40dp"
             android:textSize="20sp"
             android:checked="false" />
@@ -57,8 +57,8 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/notion"
-            android:id="@+id/answerDRadioButton"
+            android:text="@string/insufficient"
+            android:id="@+id/insufficientRadioButton"
             android:layout_marginTop="40dp"
             android:textSize="20sp"
             android:checked="false" />

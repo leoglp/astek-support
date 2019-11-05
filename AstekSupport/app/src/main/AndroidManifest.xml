@@ -37,7 +37,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".TargetEvaluationActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".SkillEvaluationActivity"
+        <activity android:name=".PerformanceEvaluationActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".skill.TechnicalSkillActivity"
             android:screenOrientation="portrait" />
@@ -66,6 +66,26 @@
         <activity android:name=".skill.OthersSkillActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".skill.EnglishSkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SkillEvaluationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".FutureTargetEvaluationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".evolution.ShortEvolutionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".evolution.MediumEvolutionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".evolution.LongEvolutionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".evolution.OtherEvolutionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".BilanFormationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".WishFormationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CPFActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SynthesisActivity"
             android:screenOrientation="portrait" />
     </application>
 

@@ -10,10 +10,17 @@ import com.astek.asteksupport.utils.AuthenticationUtil.Companion.isManager
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.addValueInDataBase
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
 import com.astek.asteksupport.utils.UIUtil
+import com.astek.asteksupport.utils.UIUtil.Companion.getPage
+import com.astek.asteksupport.utils.UIUtil.Companion.getTotalPage
 import com.astek.asteksupport.utils.UIUtil.Companion.showMessage
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.multiple_skills_layout.*
 import kotlinx.android.synthetic.main.page_add_layout.*
+import kotlinx.android.synthetic.main.page_add_layout.backArrow
+import kotlinx.android.synthetic.main.page_add_layout.logout
+import kotlinx.android.synthetic.main.page_add_layout.nextArrow
+import kotlinx.android.synthetic.main.page_add_layout.pageNumber
+import kotlinx.android.synthetic.main.page_layout.*
 
 class ManagerialSkillActivity : AppCompatActivity() {
 
@@ -25,7 +32,9 @@ class ManagerialSkillActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_managerial_skill)
 
-        pageNumber.text = this.getString(R.string.pageNumber,"5","5")
+        pageNumber.text = this.getString(R.string.pageNumber, getPage(this, this.javaClass.simpleName).toString(),
+            getTotalPage(this)
+        )
 
 
         if(!isManager) {
@@ -49,7 +58,7 @@ class ManagerialSkillActivity : AppCompatActivity() {
 
         backArrow.setOnClickListener{
             createOrUpdate()
-            UIUtil.goToPage("9", this)
+            UIUtil.goToPreviousPage(this, this.javaClass.simpleName)
         }
 
         logout.setOnClickListener{
@@ -419,7 +428,7 @@ class ManagerialSkillActivity : AppCompatActivity() {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()
-                    UIUtil.goToPage("11", this)
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 }
 
 
@@ -432,7 +441,7 @@ class ManagerialSkillActivity : AppCompatActivity() {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()
-                    UIUtil.goToPage("11", this)
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 }
 
 
@@ -448,7 +457,7 @@ class ManagerialSkillActivity : AppCompatActivity() {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()
-                    UIUtil.goToPage("11", this)
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 }
             }
         } else {
@@ -458,7 +467,7 @@ class ManagerialSkillActivity : AppCompatActivity() {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()
-                    UIUtil.goToPage("11", this)
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 }
 
 
@@ -469,7 +478,7 @@ class ManagerialSkillActivity : AppCompatActivity() {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()
-                    UIUtil.goToPage("11", this)
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 }
 
 
@@ -482,14 +491,13 @@ class ManagerialSkillActivity : AppCompatActivity() {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()
-                    UIUtil.goToPage("11", this)
-                }
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)                }
             }
         }
     }
 
     companion object {
-        private const val TAG = "TechnicalSkill"
+        private const val TAG = "ManagerialSkill"
     }
 
 }

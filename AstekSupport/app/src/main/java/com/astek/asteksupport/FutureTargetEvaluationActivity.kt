@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.page_add_layout.pageNumber
 import kotlinx.android.synthetic.main.page_layout.*
 import kotlinx.android.synthetic.main.target_layout.*
 
-class TargetEvaluationActivity : AppCompatActivity() {
+class FutureTargetEvaluationActivity : AppCompatActivity() {
 
     private var updateValue = false
     private var documentUpdateId = ""
@@ -26,7 +26,7 @@ class TargetEvaluationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_target_evaluation)
+        setContentView(R.layout.activity_future_target_evaluation)
 
         pageNumber.text = this.getString(R.string.pageNumber, UIUtil.getPage(this, this.javaClass.simpleName).toString(),
             UIUtil.getTotalPage(this))
@@ -132,7 +132,7 @@ class TargetEvaluationActivity : AppCompatActivity() {
         }
 
 
-        addValueInDataBase(targetEvaluation!!, "targetEvaluation")
+        addValueInDataBase(targetEvaluation!!, "futureTargetEvaluation")
     }
 
     private fun updateValueInDB(){
@@ -160,14 +160,14 @@ class TargetEvaluationActivity : AppCompatActivity() {
                 "numberTarget" to numberTarget.toString())
         }
 
-        updateValueInDataBase(targetEvaluation!!, "targetEvaluation", documentUpdateId)
+        updateValueInDataBase(targetEvaluation!!, "futureTargetEvaluation", documentUpdateId)
     }
 
     private fun retrieveData(){
         val db = FirebaseFirestore.getInstance()
 
         db.collection("users").document(AuthenticationUtil.employeeDocumentId)
-            .collection("targetEvaluation")
+            .collection("futureTargetEvaluation")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
@@ -245,7 +245,7 @@ class TargetEvaluationActivity : AppCompatActivity() {
                 addTarget.visibility = View.VISIBLE
                 deleteTarget.visibility = View.VISIBLE
             }
-            target2.text = this.getString(R.string.targetDynamic,"2")
+            target2.text = this.getString(R.string.futureTargetDynamic,"2")
             target2.visibility = View.VISIBLE
             target2EditText.visibility = View.VISIBLE
             result2.visibility = View.VISIBLE
@@ -266,8 +266,8 @@ class TargetEvaluationActivity : AppCompatActivity() {
             target3EditText.visibility = View.VISIBLE
             result3.visibility = View.VISIBLE
             result3EditText.visibility = View.VISIBLE
-            target2.text = this.getString(R.string.targetDynamic,"2")
-            target3.text = this.getString(R.string.targetDynamic,"3")
+            target2.text = this.getString(R.string.futureTargetDynamic,"2")
+            target3.text = this.getString(R.string.futureTargetDynamic,"3")
         }
     }
 
@@ -281,10 +281,10 @@ class TargetEvaluationActivity : AppCompatActivity() {
                 target2EditText.visibility = View.VISIBLE
                 result2.visibility = View.VISIBLE
                 result2EditText.visibility = View.VISIBLE
-                target2.text = this.getString(R.string.targetDynamic,"2")
+                target2.text = this.getString(R.string.futureTargetDynamic,"2")
             }
             if(numberTarget == 3) {
-                target3.text = this.getString(R.string.targetDynamic,"3")
+                target3.text = this.getString(R.string.futureTargetDynamic,"3")
                 addTarget.visibility = View.GONE
                 target3.visibility = View.VISIBLE
                 target3EditText.visibility = View.VISIBLE
@@ -311,7 +311,7 @@ class TargetEvaluationActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "TargetEvaluation"
+        private const val TAG = "FutureTargetEvaluation"
     }
 
 }

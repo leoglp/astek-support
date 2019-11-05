@@ -6,6 +6,10 @@ import android.content.Intent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.astek.asteksupport.*
+import com.astek.asteksupport.evolution.LongEvolutionActivity
+import com.astek.asteksupport.evolution.MediumEvolutionActivity
+import com.astek.asteksupport.evolution.OtherEvolutionActivity
+import com.astek.asteksupport.evolution.ShortEvolutionActivity
 import com.astek.asteksupport.skill.*
 import com.astek.asteksupport.skill.behavioural.*
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.updatePageValue
@@ -36,7 +40,7 @@ class UIUtil {
                 "3" -> intent = Intent(activity,EmployeeAppreciationActivity::class.java)
                 "4" -> intent = Intent(activity,ManagerAppreciationActivity::class.java)
                 "5" -> intent = Intent(activity,TargetEvaluationActivity::class.java)
-                "6" -> intent = Intent(activity,SkillEvaluationActivity::class.java)
+                "6" -> intent = Intent(activity,PerformanceEvaluationActivity::class.java)
                 "7" -> intent = Intent(activity,TechnicalSkillActivity::class.java)
                 "8" -> intent = Intent(activity,ProfessionSkillActivity::class.java)
                 "9" -> intent = Intent(activity,FunctionalSkillActivity::class.java)
@@ -51,8 +55,16 @@ class UIUtil {
                 "18" -> intent = Intent(activity,RigourSkillActivity::class.java)
                 "19" -> intent = Intent(activity,EnglishSkillActivity::class.java)
                 "20" -> intent = Intent(activity,OthersSkillActivity::class.java)
-                "21" -> intent = Intent(activity,EnglishSkillActivity::class.java)
-
+                "21" -> intent = Intent(activity,SkillEvaluationActivity::class.java)
+                "22" -> intent = Intent(activity,FutureTargetEvaluationActivity::class.java)
+                "23" -> intent = Intent(activity,ShortEvolutionActivity::class.java)
+                "24" -> intent = Intent(activity,MediumEvolutionActivity::class.java)
+                "25" -> intent = Intent(activity,LongEvolutionActivity::class.java)
+                "26" -> intent = Intent(activity,OtherEvolutionActivity::class.java)
+                "27" -> intent = Intent(activity,BilanFormationActivity::class.java)
+                "28" -> intent = Intent(activity,WishFormationActivity::class.java)
+                "29" -> intent = Intent(activity,CPFActivity::class.java)
+                "30" -> intent = Intent(activity,SynthesisActivity::class.java)
             }
             activity.startActivity(intent)
         }
@@ -61,6 +73,26 @@ class UIUtil {
             FirebaseAuth.getInstance().signOut()
             val intent = Intent(activity,MainActivity::class.java)
             activity.startActivity(intent)
+        }
+
+        fun getPage(activity: Activity , className: String): Int {
+            val classArray = activity.resources.getStringArray(R.array.classArray)
+            return (classArray.indexOf(className) + 1)
+        }
+
+        fun goToPreviousPage(activity: Activity , className: String) {
+            val classArray = activity.resources.getStringArray(R.array.classArray)
+            goToPage((classArray.indexOf(className)).toString(),activity)
+        }
+
+        fun goToNextPage(activity: Activity , className: String){
+            val classArray = activity.resources.getStringArray(R.array.classArray)
+            goToPage((classArray.indexOf(className) + 2).toString(),activity)
+        }
+
+        fun getTotalPage(activity: Activity): String {
+            val classArray = activity.resources.getStringArray(R.array.classArray)
+            return classArray.size.toString()
         }
 
 

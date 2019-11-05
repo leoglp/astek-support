@@ -24,7 +24,8 @@ class AdaptabilitySkillActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_adaptability_skill)
 
-        pageNumber.text = this.getString(R.string.pageNumber,"12","12")
+        pageNumber.text = this.getString(R.string.pageNumber, UIUtil.getPage(this, this.javaClass.simpleName).toString(),
+            UIUtil.getTotalPage(this))
 
 
         if(!isManager) {
@@ -40,7 +41,7 @@ class AdaptabilitySkillActivity : AppCompatActivity() {
 
         backArrow.setOnClickListener{
             createOrUpdate()
-            UIUtil.goToPage("11", this)
+            UIUtil.goToPreviousPage(this, this.javaClass.simpleName)
         }
 
         logout.setOnClickListener{
@@ -126,7 +127,7 @@ class AdaptabilitySkillActivity : AppCompatActivity() {
                 showMessage(it, this.getString(R.string.err_no_input))
             } else {
                 createOrUpdate()
-                UIUtil.goToPage("13", this)
+                UIUtil.goToNextPage(this, this.javaClass.simpleName)
             }
         } else {
             if(employeeGraduationEditText1.text.toString().isEmpty()
@@ -134,13 +135,12 @@ class AdaptabilitySkillActivity : AppCompatActivity() {
                 showMessage(it, this.getString(R.string.err_no_input))
             } else {
                 createOrUpdate()
-                UIUtil.goToPage("13", this)
-            }
+                UIUtil.goToNextPage(this, this.javaClass.simpleName)              }
         }
     }
 
     companion object {
-        private const val TAG = "ProfessionSkill"
+        private const val TAG = "AdaptabilitySkill"
     }
 
 }

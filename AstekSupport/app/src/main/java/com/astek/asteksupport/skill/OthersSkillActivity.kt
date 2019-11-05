@@ -14,6 +14,11 @@ import com.astek.asteksupport.utils.UIUtil.Companion.showMessage
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.multiple_skills_layout.*
 import kotlinx.android.synthetic.main.page_add_layout.*
+import kotlinx.android.synthetic.main.page_add_layout.backArrow
+import kotlinx.android.synthetic.main.page_add_layout.logout
+import kotlinx.android.synthetic.main.page_add_layout.nextArrow
+import kotlinx.android.synthetic.main.page_add_layout.pageNumber
+import kotlinx.android.synthetic.main.page_layout.*
 
 class OthersSkillActivity : AppCompatActivity() {
 
@@ -25,7 +30,9 @@ class OthersSkillActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_others_skill)
 
-        pageNumber.text = this.getString(R.string.pageNumber,"5","5")
+        pageNumber.text = this.getString(R.string.pageNumber, UIUtil.getPage(this, this.javaClass.simpleName).toString(),
+            UIUtil.getTotalPage(this))
+
 
 
         if(!isManager) {
@@ -49,7 +56,7 @@ class OthersSkillActivity : AppCompatActivity() {
 
         backArrow.setOnClickListener{
             createOrUpdate()
-            UIUtil.goToPage("19", this)
+            UIUtil.goToPreviousPage(this, this.javaClass.simpleName)
         }
 
         logout.setOnClickListener{
@@ -416,7 +423,7 @@ class OthersSkillActivity : AppCompatActivity() {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()
-                    UIUtil.goToPage("21", this)
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 }
 
 
@@ -429,7 +436,7 @@ class OthersSkillActivity : AppCompatActivity() {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()
-                    UIUtil.goToPage("21", this)
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 }
 
 
@@ -445,7 +452,7 @@ class OthersSkillActivity : AppCompatActivity() {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()
-                    UIUtil.goToPage("21", this)
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 }
             }
         } else {
@@ -455,7 +462,7 @@ class OthersSkillActivity : AppCompatActivity() {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()
-                    UIUtil.goToPage("21", this)
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 }
 
 
@@ -466,7 +473,7 @@ class OthersSkillActivity : AppCompatActivity() {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()
-                    UIUtil.goToPage("21", this)
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 }
 
 
@@ -479,7 +486,7 @@ class OthersSkillActivity : AppCompatActivity() {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()
-                    UIUtil.goToPage("21", this)
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 }
             }
         }

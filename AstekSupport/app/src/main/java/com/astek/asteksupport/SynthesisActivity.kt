@@ -2,35 +2,37 @@ package com.astek.asteksupport
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.astek.asteksupport.utils.AuthenticationUtil
+import com.astek.asteksupport.utils.AuthenticationUtil.Companion.isManager
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.addValueInDataBase
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
 import com.astek.asteksupport.utils.UIUtil
 import com.astek.asteksupport.utils.UIUtil.Companion.backToHome
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_bilan_mission.*
+import kotlinx.android.synthetic.main.activity_synthesis.*
 import kotlinx.android.synthetic.main.page_layout.*
 
-class BilanMissionActivity : AppCompatActivity() {
+class SynthesisActivity : AppCompatActivity() {
 
     private var updateValue = false
     private var documentUpdateId = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bilan_mission)
+        setContentView(R.layout.activity_synthesis)
 
         pageNumber.text = this.getString(R.string.pageNumber, UIUtil.getPage(this, this.javaClass.simpleName).toString(),
             UIUtil.getTotalPage(this))
 
-        nextArrow.setOnClickListener{
-            if(explanationEditText.text.toString().isEmpty()) {
-                UIUtil.showMessage(it, this.getString(R.string.err_no_input))
-            } else {
-                createOrUpdate()
-                UIUtil.goToNextPage(this, this.javaClass.simpleName)
-            }
+        nextArrow.isEnabled = false
+        nextArrow.visibility = View.GONE
+
+        if(isManager) {
+            resultButton.text = this.getString(R.string.generateReport)
+        } else {
+            resultButton.text = this.getString(R.string.sendReport)
         }
 
         backArrow.setOnClickListener{
@@ -50,32 +52,32 @@ class BilanMissionActivity : AppCompatActivity() {
     }
 
     private fun createValueInDB(){
-        val bilanMission = hashMapOf(
-            "bilanMission" to explanationEditText.text.toString()
+        val synthesis = hashMapOf(
+            "synthesis" to synthesisEditText.text.toString()
         )
 
-        addValueInDataBase(bilanMission, "bilanMission")
+        addValueInDataBase(synthesis, "synthesis")
     }
 
     private fun updateValueInDB(){
 
-        val bilanMission = hashMapOf(
-            "bilanMission" to explanationEditText.text.toString()
+        val synthesis = hashMapOf(
+            "synthesis" to synthesisEditText.text.toString()
         )
 
-        updateValueInDataBase(bilanMission, "bilanMission", documentUpdateId)
+        updateValueInDataBase(synthesis, "synthesis", documentUpdateId)
     }
 
     private fun retrieveData(){
         val db = FirebaseFirestore.getInstance()
 
         db.collection("users").document(AuthenticationUtil.employeeDocumentId)
-            .collection("bilanMission")
+            .collection("synthesis")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    if (document.get("bilanMission") != null) {
-                        explanationEditText.setText(document.get("bilanMission").toString())
+                    if (document.get("synthesis") != null) {
+                        synthesisEditText.setText(document.get("synthesis").toString())
                     }
                     updateValue = true
                     documentUpdateId = document.id
@@ -95,7 +97,7 @@ class BilanMissionActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "BilanMission"
+        private const val TAG = "Synthesis"
     }
 
 }

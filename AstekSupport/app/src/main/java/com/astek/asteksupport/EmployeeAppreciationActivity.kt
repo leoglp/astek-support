@@ -21,7 +21,8 @@ class EmployeeAppreciationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_employee_appreciation)
 
-        pageNumber.text = this.getString(R.string.pageNumber,"3","5")
+        pageNumber.text = this.getString(R.string.pageNumber, UIUtil.getPage(this, this.javaClass.simpleName).toString(),
+            UIUtil.getTotalPage(this))
 
         nextArrow.setOnClickListener{
             if(gainEditText.text.toString().isEmpty()
@@ -30,13 +31,13 @@ class EmployeeAppreciationActivity : AppCompatActivity() {
                 UIUtil.showMessage(it, this.getString(R.string.err_no_input))
             } else {
                 createOrUpdate()
-                UIUtil.goToPage("4", this)
+                UIUtil.goToNextPage(this, this.javaClass.simpleName)
             }
         }
 
         backArrow.setOnClickListener{
             createOrUpdate()
-            UIUtil.goToPage("2", this)
+            UIUtil.goToPreviousPage(this, this.javaClass.simpleName)
         }
 
         logout.setOnClickListener{

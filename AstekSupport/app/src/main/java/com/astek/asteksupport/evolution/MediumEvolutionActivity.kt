@@ -1,36 +1,39 @@
-package com.astek.asteksupport
+package com.astek.asteksupport.evolution
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.astek.asteksupport.R
 import com.astek.asteksupport.utils.AuthenticationUtil
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.addValueInDataBase
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
 import com.astek.asteksupport.utils.UIUtil
-import com.astek.asteksupport.utils.UIUtil.Companion.backToHome
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_bilan_mission.*
+import kotlinx.android.synthetic.main.evolution_layout.*
 import kotlinx.android.synthetic.main.page_layout.*
 
-class BilanMissionActivity : AppCompatActivity() {
+class MediumEvolutionActivity : AppCompatActivity() {
 
     private var updateValue = false
     private var documentUpdateId = ""
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bilan_mission)
+        setContentView(R.layout.activity_medium_evolution)
 
         pageNumber.text = this.getString(R.string.pageNumber, UIUtil.getPage(this, this.javaClass.simpleName).toString(),
             UIUtil.getTotalPage(this))
 
+
         nextArrow.setOnClickListener{
-            if(explanationEditText.text.toString().isEmpty()) {
+            if(evolutionEditText.text.toString().isEmpty()
+                || justificationEvolutionEditText.text.toString().isEmpty()
+                || meansEvolutionEditText.text.toString().isEmpty()) {
                 UIUtil.showMessage(it, this.getString(R.string.err_no_input))
             } else {
                 createOrUpdate()
-                UIUtil.goToNextPage(this, this.javaClass.simpleName)
-            }
+                UIUtil.goToNextPage(this, this.javaClass.simpleName)            }
         }
 
         backArrow.setOnClickListener{
@@ -39,43 +42,53 @@ class BilanMissionActivity : AppCompatActivity() {
         }
 
         logout.setOnClickListener{
-            backToHome(this)
+            UIUtil.backToHome(this)
         }
     }
 
-
     override fun onResume() {
         super.onResume()
+        evolution.text = this.getString(R.string.mediumEvolution)
         retrieveData()
     }
 
     private fun createValueInDB(){
-        val bilanMission = hashMapOf(
-            "bilanMission" to explanationEditText.text.toString()
+        val mediumEvolution = hashMapOf(
+            "evolution" to evolutionEditText.text.toString(),
+            "justification" to justificationEvolutionEditText.text.toString(),
+            "means" to meansEvolutionEditText.text.toString()
         )
 
-        addValueInDataBase(bilanMission, "bilanMission")
+        addValueInDataBase(mediumEvolution, "mediumEvolution")
     }
 
     private fun updateValueInDB(){
 
-        val bilanMission = hashMapOf(
-            "bilanMission" to explanationEditText.text.toString()
+        val mediumEvolution = hashMapOf(
+            "evolution" to evolutionEditText.text.toString(),
+            "justification" to justificationEvolutionEditText.text.toString(),
+            "means" to meansEvolutionEditText.text.toString()
         )
 
-        updateValueInDataBase(bilanMission, "bilanMission", documentUpdateId)
+        updateValueInDataBase(mediumEvolution, "mediumEvolution", documentUpdateId)
     }
 
     private fun retrieveData(){
         val db = FirebaseFirestore.getInstance()
 
         db.collection("users").document(AuthenticationUtil.employeeDocumentId)
-            .collection("bilanMission")
+            .collection("mediumEvolution")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    if (document.get("bilanMission") != null) {
-                        explanationEditText.setText(document.get("bilanMission").toString())
+                    if (document.get("evolution") != null) {
+                        evolutionEditText.setText(document.get("evolution").toString())
+                    }
+                    if (document.get("justification") != null) {
+                        justificationEvolutionEditText.setText(document.get("justification").toString())
+                    }
+                    if (document.get("means") != null) {
+                        meansEvolutionEditText.setText(document.get("means").toString())
                     }
                     updateValue = true
                     documentUpdateId = document.id
@@ -95,7 +108,7 @@ class BilanMissionActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "BilanMission"
+        private const val TAG = "MediumEvolution"
     }
 
 }

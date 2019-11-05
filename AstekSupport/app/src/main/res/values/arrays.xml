@@ -1,0 +1,34 @@
+<resources>
+    <string-array name="classArray" >
+        <item>InterviewContextActivity</item>
+        <item>BilanMissionActivity</item>
+        <item>EmployeeAppreciationActivity</item>
+        <item>ManagerAppreciationActivity</item>
+        <item>TargetEvaluationActivity</item>
+        <item>PerformanceEvaluationActivity</item>
+        <item>TechnicalSkillActivity</item>
+        <item>ProfessionSkillActivity</item>
+        <item>FunctionalSkillActivity</item>
+        <item>ManagerialSkillActivity</item>
+        <item>AutonomySkillActivity</item>
+        <item>AdaptabilitySkillActivity</item>
+        <item>TeamWorkSkillActivity</item>
+        <item>CreativitySkillActivity</item>
+        <item>CommunicationSkillActivity</item>
+        <item>ImplicationSkillActivity</item>
+        <item>RespectSkillActivity</item>
+        <item>RigourSkillActivity</item>
+        <item>EnglishSkillActivity</item>
+        <item>OthersSkillActivity</item>
+        <item>SkillEvaluationActivity</item>
+        <item>FutureTargetEvaluationActivity</item>
+        <item>ShortEvolutionActivity</item>
+        <item>MediumEvolutionActivity</item>
+        <item>LongEvolutionActivity</item>
+        <item>OtherEvolutionActivity</item>
+        <item>BilanFormationActivity</item>
+        <item>WishFormationActivity</item>
+        <item>CPFActivity</item>
+        <item>SynthesisActivity</item>
+    </string-array>
+</resources>

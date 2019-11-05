@@ -22,34 +22,35 @@ class SkillEvaluationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_skill_evaluation)
 
-        pageNumber.text = this.getString(R.string.pageNumber,"4","5")
+        pageNumber.text = this.getString(R.string.pageNumber, UIUtil.getPage(this, this.javaClass.simpleName).toString(),
+            UIUtil.getTotalPage(this))
 
         if(!isManager) {
-            verySatisfyingRadioButton.isEnabled = false
-            satisfyingRadioButton.isEnabled = false
-            mediumRadioButton.isEnabled = false
-            insufficientRadioButton.isEnabled = false
+            answerARadioButton.isEnabled = false
+            answerBRadioButton.isEnabled = false
+            answerCRadioButton.isEnabled = false
+            answerDRadioButton.isEnabled = false
         }
 
         nextArrow.setOnClickListener{
 
             if(isManager){
-                if(verySatisfyingRadioButton.isChecked || satisfyingRadioButton.isChecked
-                    || mediumRadioButton.isChecked || insufficientRadioButton.isChecked) {
+                if(answerARadioButton.isChecked || answerBRadioButton.isChecked
+                    || answerCRadioButton.isChecked || answerDRadioButton.isChecked) {
                     createOrUpdate()
-                    UIUtil.goToPage("7", this)
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 } else {
                     UIUtil.showMessage(it, this.getString(R.string.err_no_checked))
                 }
             } else {
-                UIUtil.goToPage("7", this)
+                UIUtil.goToNextPage(this, this.javaClass.simpleName)
             }
 
         }
 
         backArrow.setOnClickListener{
             createOrUpdate()
-            UIUtil.goToPage("5", this)
+            UIUtil.goToPreviousPage(this, this.javaClass.simpleName)
         }
 
         logout.setOnClickListener{
@@ -109,38 +110,38 @@ class SkillEvaluationActivity : AppCompatActivity() {
 
 
     private fun getStringValue(): String {
-        if(verySatisfyingRadioButton.isChecked) {
-            return "Très Satisfaisant"
+        if(answerARadioButton.isChecked) {
+            return "Expertise"
         }
-        if(satisfyingRadioButton.isChecked) {
-            return "Satisfaisant"
+        if(answerBRadioButton.isChecked) {
+            return "Capacité Autonome"
         }
-        if(mediumRadioButton.isChecked) {
-            return "Moyen"
+        if(answerCRadioButton.isChecked) {
+            return "Capacité Partielle"
         }
-        if(insufficientRadioButton.isChecked) {
-            return "Insuffisant"
+        if(answerDRadioButton.isChecked) {
+            return "Notion"
         }
         return "nothing"
     }
 
     private fun checkedOneButton(value: String){
-        if(value == "Très Satisfaisant") {
-            verySatisfyingRadioButton.isChecked = true
+        if(value == "Expertise") {
+            answerARadioButton.isChecked = true
         }
-        if(value == "Satisfaisant") {
-            satisfyingRadioButton.isChecked = true
+        if(value == "Capacité Autonome") {
+            answerBRadioButton.isChecked = true
         }
-        if(value == "Moyen") {
-            mediumRadioButton.isChecked = true
+        if(value == "Capacité Partielle") {
+            answerCRadioButton.isChecked = true
         }
-        if(value == "Insuffisant") {
-            insufficientRadioButton.isChecked = true
+        if(value == "Notion") {
+            answerDRadioButton.isChecked = true
         }
     }
 
     companion object {
-        private const val TAG = "ManagerAppreciation"
+        private const val TAG = "SkillEvaluation"
     }
 
 }
