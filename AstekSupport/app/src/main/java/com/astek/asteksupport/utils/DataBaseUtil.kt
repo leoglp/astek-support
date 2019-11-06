@@ -2,12 +2,19 @@ package com.astek.asteksupport.utils
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.graphics.Canvas
+import android.graphics.pdf.PdfDocument
+import android.os.Build
+import android.text.TextPaint
 import android.util.Log
 import android.view.View
+import androidx.annotation.RequiresApi
 import com.astek.asteksupport.R
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeDocumentId
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.isManager
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.managerDocumentId
+import com.astek.asteksupport.utils.PdfUtil.Companion.writeInLeftRectancle
+import com.astek.asteksupport.utils.PdfUtil.Companion.writeInRightRectancle
 import com.astek.asteksupport.utils.UIUtil.Companion.goToPage
 import com.astek.asteksupport.utils.UIUtil.Companion.showMessage
 import com.google.firebase.auth.FirebaseAuth
@@ -131,6 +138,76 @@ class DataBaseUtil {
                 }
                 .addOnFailureListener { e ->
                     Log.d(TAG, "Error adding document", e)
+                }
+        }
+
+
+
+
+
+
+        /******************************* FIRST PAGE FOR PDF *************************************/
+        @SuppressLint("DefaultLocale")
+        fun retrieveLeftRectangleValue() {
+
+            var text: String
+            db.collection("users").document(employeeDocumentId)
+                .get()
+                .addOnSuccessListener { result ->
+
+                    val name = result.get("name").toString()
+                    val surname = result.get("surname").toString()
+                    val society = result.get("society").toString()
+                    val birthDate = result.get("birthdate").toString()
+                    val enterDate = result.get("enterDate").toString()
+                    val experimentDate = result.get("experimentDate").toString()
+                    val function = result.get("function").toString()
+                    val diplom = result.get("diplom").toString()
+                    val obtentionDate = result.get("obtentionDate").toString()
+
+                    text = "NOM Prénom : $name $surname \n \n"
+                    text += "Société : $society \n \n"
+                    text += "Date de naissance : $birthDate \n \n"
+                    text += "Date d'entrée chez Astek : $enterDate \n \n"
+                    text += "Nbre d’Années d’expérience total : $experimentDate \n \n"
+                    text += "Fonction : $function \n \n"
+                    text += "Diplôme / Ecole : $diplom \n \n"
+                    text += "Date d'obtention : $obtentionDate \n \n"
+
+                    writeInLeftRectancle(text,85F,255F)
+                }
+                .addOnFailureListener { exception ->
+                    Log.d(TAG, "Error getting documents.", exception)
+                }
+        }
+
+
+        @SuppressLint("DefaultLocale")
+        fun retrieveRightRectangleValue() {
+            var text: String
+
+            db.collection("users").document(employeeDocumentId)
+                .collection("interviewContext")
+                .get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        val bilanDate = document.get("bilanDate").toString()
+                        val previousDate = document.get("previousDate").toString()
+                        val interviewDate = document.get("interviewDate").toString()
+                        val managerName = document.get("managerName").toString()
+
+
+                        text = "Année du bilan : $bilanDate \n \n"
+                        text += "Date de l’entretien N-1 : $previousDate \n \n"
+                        text += "Date de l’entretien N : $interviewDate \n \n"
+                        text += "Manager : $managerName \n \n"
+
+                        writeInRightRectancle(text,303F,255F)
+
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d(TAG, "Error getting documents.", exception)
                 }
         }
     }

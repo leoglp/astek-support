@@ -32,7 +32,7 @@
             <EditText
                 android:id="@+id/synthesisEditText"
                 android:layout_width="match_parent"
-                android:layout_height="450dp"
+                android:layout_height="400dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/round_outline_enabled"
                 android:layout_margin="15dp"
@@ -46,14 +46,33 @@
                 tools:ignore="LabelFor"
                 />
 
+            <EditText
+                android:id="@+id/managerEmailEditText"
+                android:hint="@string/mailManager"
+                android:layout_below="@id/synthesisEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:textAlignment="center"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                tools:ignore="LabelFor"
+                />
+
             <Button
                 android:id="@+id/resultButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@id/synthesisEditText"
+                android:layout_below="@id/managerEmailEditText"
                 android:background="@drawable/round_outline_enabled"
-                android:layout_margin="10dp"/>
+                android:padding="5dp"/>
 
             <include layout="@layout/page_layout"
                 android:layout_width="match_parent"

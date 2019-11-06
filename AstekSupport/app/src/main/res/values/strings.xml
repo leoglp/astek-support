@@ -149,7 +149,10 @@
 
     <!-- Synthesis -->
     <string name="titleSynthesis">Synthèse de l\'entretien par le Manager</string>
-    <string name="sendReport">Envoyer le rapport</string>
+    <string name="notifyManager">Avertir le manager</string>
+    <string name="mailManager">Adresse mail du manager</string>
     <string name="generateReport">Générer le rapport</string>
+    <string name="mailSubjectEmployee">Support Entretien Annuel de %1$s %2$s</string>
+    <string name="mailTextEmployee">Bonjour, \n \n J\'ai terminé ma partie concernant le support de l\'entretien annuel. \n \n %1$s %2$s</string>
 
 </resources>

@@ -8,6 +8,8 @@ import com.astek.asteksupport.utils.AuthenticationUtil
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.isManager
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.addValueInDataBase
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
+import com.astek.asteksupport.utils.MailUtil.Companion.sendMail
+import com.astek.asteksupport.utils.PdfUtil.Companion.createPdf
 import com.astek.asteksupport.utils.UIUtil
 import com.astek.asteksupport.utils.UIUtil.Companion.backToHome
 import com.google.firebase.firestore.FirebaseFirestore
@@ -27,12 +29,16 @@ class SynthesisActivity : AppCompatActivity() {
             UIUtil.getTotalPage(this))
 
         nextArrow.isEnabled = false
-        nextArrow.visibility = View.GONE
+        nextArrow.visibility = View.INVISIBLE
 
         if(isManager) {
+            managerEmailEditText.isEnabled = false
+            managerEmailEditText.visibility = View.GONE
             resultButton.text = this.getString(R.string.generateReport)
         } else {
-            resultButton.text = this.getString(R.string.sendReport)
+            synthesisEditText.isEnabled = false
+            synthesisEditText.background = this.getDrawable(R.drawable.round_outline_disabled)
+            resultButton.text = this.getString(R.string.notifyManager)
         }
 
         backArrow.setOnClickListener{
@@ -43,6 +49,23 @@ class SynthesisActivity : AppCompatActivity() {
         logout.setOnClickListener{
             backToHome(this)
         }
+
+
+
+        resultButton.setOnClickListener {
+            if(isManager){
+
+            } else {
+                //if(managerEmailEditText.text.toString().isEmpty()){
+                  //  UIUtil.showMessage(it, this.getString(R.string.err_no_input))
+                //} else {
+                    createPdf(this)
+                    //sendMail(this,managerEmailEditText.text.toString())
+                //}
+            }
+        }
+
+
     }
 
 
