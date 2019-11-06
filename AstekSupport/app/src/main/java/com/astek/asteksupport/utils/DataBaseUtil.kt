@@ -2,19 +2,14 @@ package com.astek.asteksupport.utils
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.graphics.Canvas
-import android.graphics.pdf.PdfDocument
-import android.os.Build
-import android.text.TextPaint
 import android.util.Log
 import android.view.View
-import androidx.annotation.RequiresApi
 import com.astek.asteksupport.R
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeDocumentId
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.isManager
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.managerDocumentId
-import com.astek.asteksupport.utils.PdfUtil.Companion.writeInLeftRectancle
-import com.astek.asteksupport.utils.PdfUtil.Companion.writeInRightRectancle
+import com.astek.asteksupport.utils.pdf.FirstPagePdfUtil.Companion.writeInLeftRectancle
+import com.astek.asteksupport.utils.pdf.FirstPagePdfUtil.Companion.writeInRightRectancle
 import com.astek.asteksupport.utils.UIUtil.Companion.goToPage
 import com.astek.asteksupport.utils.UIUtil.Companion.showMessage
 import com.google.firebase.auth.FirebaseAuth
@@ -203,7 +198,6 @@ class DataBaseUtil {
                         text += "Manager : $managerName \n \n"
 
                         writeInRightRectancle(text,303F,255F)
-
                     }
                 }
                 .addOnFailureListener { exception ->
