@@ -1,30 +1,21 @@
-package com.astek.asteksupport.utils
+package com.astek.asteksupport.utils.pdf
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.graphics.*
 import android.graphics.pdf.PdfDocument
-import android.os.Build
-import android.os.Environment
-import android.text.Layout
-import android.text.StaticLayout
 import android.text.TextPaint
-import android.util.Log
-import androidx.annotation.RequiresApi
-import androidx.core.graphics.withTranslation
 import com.astek.asteksupport.R
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.retrieveLeftRectangleValue
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.retrieveRightRectangleValue
-import com.astek.asteksupport.utils.PdfUtil.Companion.borderRectangleOptions
-import com.astek.asteksupport.utils.PdfUtil.Companion.createPage
-import com.astek.asteksupport.utils.PdfUtil.Companion.drawText
-import com.astek.asteksupport.utils.PdfUtil.Companion.fillRectangleOptions
-import com.astek.asteksupport.utils.PdfUtil.Companion.footer
-import com.astek.asteksupport.utils.PdfUtil.Companion.setTextOptions
-import com.astek.asteksupport.utils.PdfUtil.Companion.writeTabInfo
-import java.io.File
-import java.io.FileOutputStream
-import java.io.IOException
+import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.borderRectangleOptions
+import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.createPage
+import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.drawText
+import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.fillRectangleOptions
+import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.footer
+import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.setTextOptions
+import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.writeTabInfo
+import com.astek.asteksupport.utils.pdf.SecondPagePdfUtil.Companion.createSecondPage
 
 
 @Suppress("DEPRECATION")
@@ -42,11 +33,11 @@ class FirstPagePdfUtil {
 
         fun createFirstPage(canvas: Canvas , textPaint: TextPaint , activity: Activity , pdfDocument: PdfDocument , page: PdfDocument.Page) {
 
-            this.canvas = canvas
-            this.textPaint = textPaint
-            this.activity = activity
-            this.pdfDocument = pdfDocument
-            this.page = page
+            Companion.canvas = canvas
+            Companion.textPaint = textPaint
+            Companion.activity = activity
+            Companion.pdfDocument = pdfDocument
+            Companion.page = page
 
             val infoFirstPage =
                 "Le dossier de compétences du salarié doit être mis à jour avant tout entretien annuel et envoyé au manager avant la date programmée de cet entretien.\n \n" +
@@ -95,7 +86,7 @@ class FirstPagePdfUtil {
             pdfDocument.finishPage(page)
 
             //Start Second Page
-            createSecondPage()
+            createSecondPage(canvas, textPaint, activity, pdfDocument, page)
         }
     }
 

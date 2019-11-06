@@ -1,4 +1,4 @@
-package com.astek.asteksupport.utils
+package com.astek.asteksupport.utils.pdf
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -13,9 +13,7 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.graphics.withTranslation
 import com.astek.asteksupport.R
-import com.astek.asteksupport.utils.DataBaseUtil.Companion.retrieveLeftRectangleValue
-import com.astek.asteksupport.utils.DataBaseUtil.Companion.retrieveRightRectangleValue
-import com.astek.asteksupport.utils.FirstPagePdfUtil.Companion.createFirstPage
+import com.astek.asteksupport.utils.pdf.FirstPagePdfUtil.Companion.createFirstPage
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -46,42 +44,21 @@ class PdfUtil {
         }
 
 
-        fun createSecondPage() {
 
-            createPage(2)
-            footer("2")
-
-            writeInterviewPlan()
-
-            val firstTitle = "BILAN DES MISSIONS / PROJETS DE L’ANNEE ECOULEE"
-            textPaint.set(setTextOptions(Color.YELLOW, Typeface.BOLD, 14F))
-            drawText(firstTitle,555,20F,160F,1.0F,false)
-
-            val firstInfo = "Décrire succinctement les activités confiées, les compétences mises en œuvre et " +
-                    "les résultats obtenus (Client, Période, Rôle occupé, Responsabilité, Environnement Technique et Fonctionnel)"
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.ITALIC, 12F))
-            drawText(firstInfo,555,20F,190F,1.0F,false)
-
-
-
-            closeDocument()
-        }
-
-
-        fun StaticLayout.draw(canvas: Canvas, x: Float, y: Float) {
+        private fun StaticLayout.draw(canvas: Canvas, x: Float, y: Float) {
             canvas.withTranslation(x, y) {
                 draw(this)
             }
         }
 
-         private fun writeHeader(){
+        private fun writeHeader(){
             val logoHeader = activity.resources.getDrawable(R.drawable.header)
             val logoHeaderRect = Rect(0, 0, 595, 80)
             logoHeader.bounds = logoHeaderRect
             logoHeader.draw(canvas)
         }
 
-         fun footer(pageNumber: String) {
+        fun footer(pageNumber: String) {
             val totalPage = "8"
             val onText = "sur"
             val page = "page"
@@ -109,7 +86,7 @@ class PdfUtil {
             drawText(infoLine3,700,80F,800F,1.0F,false)
         }
 
-         fun createPage(pageNumber: Int) {
+        fun createPage(pageNumber: Int) {
             // create a page description
             val pageInfo: PdfDocument.PageInfo = PdfDocument.PageInfo.Builder(595, 842, pageNumber).create()
 
@@ -121,7 +98,7 @@ class PdfUtil {
             writeHeader()
         }
 
-         fun writeTabInfo(){
+        fun writeTabInfo(){
 
             val title = "Légende de notation"
             val leftInfoTitle = "Evaluation de la Performance / Compétences :"
@@ -162,7 +139,7 @@ class PdfUtil {
         }
 
 
-         fun writeInterviewPlan(){
+        fun writeInterviewPlan(){
 
             val title = "PLAN DE L'ENTRETIEN"
             val info1 = "Bilan Annuel"
@@ -209,7 +186,7 @@ class PdfUtil {
 
 
 
-         fun drawText(text: String, width: Int, x: Float, y: Float, spaceMultiline: Float, isCenter: Boolean){
+        fun drawText(text: String, width: Int, x: Float, y: Float, spaceMultiline: Float, isCenter: Boolean){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 if(isCenter) {
                     val staticLayout = StaticLayout.Builder
@@ -249,21 +226,21 @@ class PdfUtil {
             }
         }
 
-         fun borderRectangleOptions(): Paint {
+        fun borderRectangleOptions(): Paint {
             val paint = Paint()
             paint.color = Color.BLACK
             paint.style = Paint.Style.STROKE
             return paint
         }
 
-         fun fillRectangleOptions(color: Int): Paint {
+        fun fillRectangleOptions(color: Int): Paint {
             val paint = Paint()
             paint.color = color
             paint.style = Paint.Style.FILL
             return paint
         }
 
-         fun setTextOptions(color: Int, type: Int, size: Float): Paint {
+        fun setTextOptions(color: Int, type: Int, size: Float): Paint {
             val paint = Paint()
             paint.color = color
             paint.typeface = Typeface.create(Typeface.DEFAULT, type)
@@ -271,7 +248,7 @@ class PdfUtil {
             return paint
         }
 
-         fun closeDocument() {
+        fun closeDocument() {
             // finish the page
             pdfDocument.finishPage(page)
 
