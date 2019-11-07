@@ -39,6 +39,8 @@ class PdfUtil {
             // create a new document
             pdfDocument = PdfDocument()
 
+            createPage(1)
+
             //First page creation
             createFirstPage(canvas, textPaint, activity, pdfDocument, page)
         }
@@ -86,7 +88,7 @@ class PdfUtil {
             drawText(infoLine3,700,80F,800F,1.0F,false)
         }
 
-        fun createPage(pageNumber: Int) {
+        fun createPage(pageNumber: Int){
             // create a page description
             val pageInfo: PdfDocument.PageInfo = PdfDocument.PageInfo.Builder(595, 842, pageNumber).create()
 
@@ -248,9 +250,17 @@ class PdfUtil {
             return paint
         }
 
+        fun setUnderlineTextOptions(color: Int, type: Int, size: Float): Paint {
+            val paint = Paint()
+            paint.color = color
+            paint.typeface = Typeface.create(Typeface.DEFAULT, type)
+            paint.isUnderlineText = true
+            paint.textSize = size
+            return paint
+        }
+
         fun closeDocument() {
             // finish the page
-            pdfDocument.finishPage(page)
 
             // write the document content
             val directoryPath = Environment.getExternalStorageDirectory().path + "/mypdf/"
@@ -270,6 +280,23 @@ class PdfUtil {
             // close the document
             pdfDocument.close()
         }
+
+        fun getTextPaint(): TextPaint {
+            return textPaint
+        }
+
+        fun getPage(): PdfDocument.Page {
+            return page
+        }
+
+        fun getPdfDocument(): PdfDocument {
+            return pdfDocument
+        }
+
+        fun getCanvas(): Canvas {
+            return canvas
+        }
+
     }
 
 
