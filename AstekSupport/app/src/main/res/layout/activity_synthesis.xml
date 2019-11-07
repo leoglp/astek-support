@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/titleSynthesis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titleSynthesis"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/titleSynthesis"
+        android:fillViewport="true"
+        >
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+
+            <EditText
+                android:id="@+id/synthesisEditText"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                tools:ignore="LabelFor"
+                />
+
+            <EditText
+                android:id="@+id/managerEmailEditText"
+                android:hint="@string/mailManager"
+                android:layout_below="@id/synthesisEditText"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:textAlignment="center"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                tools:ignore="LabelFor"
+                />
+
+            <Button
+                android:id="@+id/resultButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/managerEmailEditText"
+                android:background="@drawable/round_outline_enabled"
+                android:padding="5dp"/>
+
+            <include layout="@layout/page_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/resultButton"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
+

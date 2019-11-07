@@ -1,0 +1,140 @@
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:layout_below="@id/skill1"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/employeeGraduationLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/employeeGraduation"
+                android:layout_marginStart="15dp"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/employeeGraduationEditText1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                android:inputType="number"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor" />
+
+            <ImageView
+                android:id="@+id/employeeGraduationInfo"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:background="@drawable/ic_info"
+                android:importantForAutofill="no"
+                android:clickable="true"
+                android:focusable="true"
+                tools:ignore="LabelFor" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/managerGraduationLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/employeeGraduationLayout1">
+
+            <TextView
+                android:id="@+id/managerGraduationText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/managerGraduation"
+                android:layout_marginStart="15dp"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/managerGraduationEditText1"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="30dp"
+                android:inputType="number"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/skillExample1"
+            android:layout_below="@id/managerGraduationLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skillExample"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/skillExampleEditText1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@+id/skillExample1"
+            android:background="@drawable/round_outline_enabled"
+            android:layout_margin="15dp"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:gravity="top|start"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
+
+        <TextView
+            android:id="@+id/improvementAndGain1"
+            android:layout_below="@id/skillExampleEditText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/improvementAndGain"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/improvementAndGainEditText1"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@+id/improvementAndGain1"
+            android:background="@drawable/round_outline_enabled"
+            android:layout_margin="15dp"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:gravity="top|start"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            />
+
+
+        <include layout="@layout/page_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/improvementAndGainEditText1"
+            >
+        </include>
+
+    </RelativeLayout>
+</ScrollView>

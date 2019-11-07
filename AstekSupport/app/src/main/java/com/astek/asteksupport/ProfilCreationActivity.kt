@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.createUser
-import com.astek.asteksupport.utils.ShowUtil
+import com.astek.asteksupport.utils.DataBaseUtil.Companion.createProfil
+import com.astek.asteksupport.utils.UIUtil
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_profil_creation.*
 
@@ -29,7 +30,7 @@ class ProfilCreationActivity : AppCompatActivity() {
                 || obtentionEditText.text.toString().isEmpty()
                 || mailCreationEditText.text.toString().isEmpty()) {
 
-                ShowUtil.showMessage(it, this.getString(R.string.err_no_input))
+                UIUtil.showMessage(it, this.getString(R.string.err_no_input))
             } else {
                 addInfoInProfil()
                 createUser(
@@ -66,22 +67,11 @@ class ProfilCreationActivity : AppCompatActivity() {
             "function" to functionEditText.text.toString(),
             "diplom" to diplomEditText.text.toString(),
             "obtentionDate" to obtentionEditText.text.toString(),
-            "mail" to mailCreationEditText.text.toString()
+            "mail" to mailCreationEditText.text.toString(),
+            "page" to "1"
         )
 
-
-        // Add a new document with a generated ID
-        val db = FirebaseFirestore.getInstance()
-
-        db.collection("users")
-            .add(profilUser)
-            .addOnSuccessListener { documentReference ->
-                Log.d("TITI", "DocumentSnapshot added with ID: ${documentReference.id}")
-            }
-            .addOnFailureListener { e ->
-                Log.d("TITI", "Error adding document", e)
-            }
-
+        createProfil(profilUser)
     }
 
 

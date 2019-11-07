@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/titleBilanMission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titleCPF"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/titleBilanMission"
+        android:fillViewport="true"
+        >
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+
+            <LinearLayout
+                android:id="@+id/numberHoursCpfLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/numberHoursCpf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cpfNumberHours"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/numberHoursCpfEditText"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:inputType="number"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dateCpfLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/numberHoursCpfLayout">
+
+                <TextView
+                    android:id="@+id/dateCpf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cpfDate"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/dateCpfEditText"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:inputType="date"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/questionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cpfQuestion"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:layout_below="@id/dateCpfLayout"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"/>
+
+
+                <RadioGroup
+                    android:id="@+id/questionRadioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/questionText"
+                    android:orientation="horizontal"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20sp">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/yes"
+                        android:id="@+id/yesRadioButton"
+                        android:layout_marginEnd="20dp"
+                        android:checked="true" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no"
+                        android:id="@+id/noRadioButton"
+                        android:checked="false" />
+                </RadioGroup>
+
+            <TextView
+                android:id="@+id/commentaryCpf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cpfCommentary"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:layout_below="@id/questionRadioGroup"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/commentaryCpfEditText"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_below="@+id/commentaryCpf"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+
+
+            <include layout="@layout/page_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/commentaryCpfEditText"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
+

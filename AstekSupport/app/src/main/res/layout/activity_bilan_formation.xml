@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/titleBilanFormation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/titleBilanFormation"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/titleBilanFormation"
+        android:fillViewport="true"
+        >
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <LinearLayout
+                android:id="@+id/entitledLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/entitled1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formationEntitled"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/entitledEditText1"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:inputType="textCapSentences"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dateLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/entitledLayout1">
+
+                <TextView
+                    android:id="@+id/date1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formationDate"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/dateEditText1"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:inputType="date"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/durationLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dateLayout1">
+
+                <TextView
+                    android:id="@+id/duration1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formationDuration"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/durationEditText1"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:inputType="number"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/initiativeLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_below="@id/durationLayout1">
+
+
+                <TextView
+                    android:id="@+id/initiative1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formationInitiative"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="30dp"
+                    android:textSize="18sp"/>
+
+                <RadioGroup
+                    android:id="@+id/whoRadioGroup1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:textSize="20sp">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/formationEmployer"
+                        android:id="@+id/employerRadioButton1"
+                        android:checked="true" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/formationEmployee"
+                        android:id="@+id/employeeRadioButton1"
+                        android:checked="false" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/implementation1"
+                android:layout_below="@id/initiativeLayout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/formationImplementation"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/implementationEditText1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@+id/implementation1"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+            <TextView
+                android:id="@+id/commentary1"
+                android:layout_below="@id/implementationEditText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/formationCommentary"
+                android:layout_marginStart="15dp"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/commentaryEditText1"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@+id/commentary1"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                />
+
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/entitledLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/commentaryEditText1"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/entitled2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formationEntitled"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/entitledEditText2"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:inputType="textCapSentences"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dateLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/entitledLayout2"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/date2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formationDate"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/dateEditText2"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:inputType="date"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/durationLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dateLayout2"
+                android:visibility="gone"
+                >
+
+                <TextView
+                    android:id="@+id/duration2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formationDuration"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/durationEditText2"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:inputType="number"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/initiativeLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_below="@id/durationLayout2"
+                android:visibility="gone"
+                >
+
+
+                <TextView
+                    android:id="@+id/initiative2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formationInitiative"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="30dp"
+                    android:textSize="18sp"/>
+
+                <RadioGroup
+                    android:id="@+id/whoRadioGroup2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:textSize="20sp">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/formationEmployer"
+                        android:id="@+id/employerRadioButton2"
+                        android:checked="true" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/formationEmployee"
+                        android:id="@+id/employeeRadioButton2"
+                        android:checked="false" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/implementation2"
+                android:layout_below="@id/initiativeLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/formationImplementation"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:visibility="gone"
+                />
+
+            <EditText
+                android:id="@+id/implementationEditText2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@+id/implementation2"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="gone"
+
+                />
+
+            <TextView
+                android:id="@+id/commentary2"
+                android:layout_below="@id/implementationEditText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/formationCommentary"
+                android:layout_marginStart="15dp"
+                android:textSize="18sp"
+                android:visibility="gone"
+                />
+
+            <EditText
+                android:id="@+id/commentaryEditText2"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@+id/commentary2"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="gone"
+                />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/entitledLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/commentaryEditText2"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/entitled3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formationEntitled"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/entitledEditText3"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:inputType="textCapSentences"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/dateLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/entitledLayout3"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/date3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formationDate"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/dateEditText3"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:inputType="date"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/durationLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/dateLayout3"
+                android:visibility="gone"
+                >
+
+                <TextView
+                    android:id="@+id/duration3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formationDuration"
+                    android:layout_marginStart="15dp"
+                    android:textSize="18sp"/>
+
+                <EditText
+                    android:id="@+id/durationEditText3"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:inputType="number"
+                    android:importantForAutofill="no"
+                    tools:ignore="LabelFor" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/initiativeLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:layout_below="@id/durationLayout3"
+                android:visibility="gone"
+                >
+
+
+                <TextView
+                    android:id="@+id/initiative3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/formationInitiative"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="30dp"
+                    android:textSize="18sp"/>
+
+                <RadioGroup
+                    android:id="@+id/whoRadioGroup3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:textSize="20sp">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/formationEmployer"
+                        android:id="@+id/employerRadioButton3"
+                        android:checked="true" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/formationEmployee"
+                        android:id="@+id/employeeRadioButton3"
+                        android:checked="false" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/implementation3"
+                android:layout_below="@id/initiativeLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/formationImplementation"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:visibility="gone"
+                />
+
+            <EditText
+                android:id="@+id/implementationEditText3"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@+id/implementation3"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="gone"
+
+                />
+
+            <TextView
+                android:id="@+id/commentary3"
+                android:layout_below="@id/implementationEditText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/formationCommentary"
+                android:layout_marginStart="15dp"
+                android:textSize="18sp"
+                android:visibility="gone"
+                />
+
+            <EditText
+                android:id="@+id/commentaryEditText3"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@+id/commentary3"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                android:importantForAutofill="no"
+                tools:ignore="LabelFor"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="gone"
+                />
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <include
+                android:layout_below="@id/commentaryEditText2"
+                layout="@layout/page_add_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
+

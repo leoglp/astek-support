@@ -6,6 +6,12 @@
 
     <dist:module dist:instant="true" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,10 +29,70 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ProfilCreationActivity"/>
-        <activity android:name=".ManagerActivity"/>
-        <activity android:name=".InterviewContextActivity"/>
-        <activity android:name=".BilanMissionActivity"/>
+        <activity android:name=".ProfilCreationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ManagerActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".InterviewContextActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".BilanMissionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".EmployeeAppreciationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ManagerAppreciationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".TargetEvaluationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".PerformanceEvaluationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.TechnicalSkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.ProfessionSkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.FunctionalSkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.ManagerialSkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.behavioural.AutonomySkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.behavioural.AdaptabilitySkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.behavioural.CommunicationSkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.behavioural.CreativitySkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.behavioural.ImplicationSkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.behavioural.RespectSkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.behavioural.RigourSkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.behavioural.TeamWorkSkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.OthersSkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".skill.EnglishSkillActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SkillEvaluationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".FutureTargetEvaluationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".evolution.ShortEvolutionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".evolution.MediumEvolutionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".evolution.LongEvolutionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".evolution.OtherEvolutionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".BilanFormationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".WishFormationActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".CPFActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SynthesisActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

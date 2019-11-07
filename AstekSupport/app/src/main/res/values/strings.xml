@@ -30,7 +30,12 @@
     <string name="authentication">Authentification…</string>
     <string name="creation">Création du profil…</string>
     <string name="err_no_input">Veuillez remplir tous les champs.</string>
+    <string name="err_no_checked">Veuillez cocher une valeur.</string>
     <string name="err_no_person">Aucune personne de ce nom n\'a été trouvée.</string>
+    <string name="graduationInfo">1- Très Satisfaisant / 2 - Satisfaisant / 3 - Moyen / 4 – Insuffisant</string>
+    <string name="yes">OUI</string>
+    <string name="no">NON</string>
+    <string name="others">Autres</string>
 
     <!-- InterviewContext -->
     <string name="titleInterviewContext">Cadre de l\'entretien</string>
@@ -47,4 +52,108 @@
 
     <!-- PageInfo -->
     <string name="pageNumber">Page %1$s / %2$s</string>
+
+    <!-- Appreciation -->
+    <string name="titleEmployeeAppreciation">Appréciation du salarié sur les réalisations de l\'année</string>
+    <string name="titleManagerAppreciation">Appréciation du manager sur les réalisations de l\'année</string>
+    <string name="gain">Apports</string>
+    <string name="weaknesses">Points faibles</string>
+    <string name="pointsImprovement">Points à améliorer</string>
+
+    <!-- Target -->
+    <string name="titleTargetEvaluation">Evaluation des objectifs fixes EAE année N-1</string>
+    <string name="target1">Rappel de l\'objectif 1</string>
+    <string name="result">Résultat</string>
+    <string name="targetDynamic">Rappel de l\'objectif %1$s</string>
+
+    <!-- PerformanceEvaluation -->
+    <string name="titlePerformanceEvaluation">Evaluation de la Performance du Salarié Année N (par le Manager)</string>
+    <string name="verySatisfying">A - Très Satisfaisant</string>
+    <string name="satisfying">B - Satisfaisant</string>
+    <string name="medium">C - Moyen</string>
+    <string name="insufficient">D - Insuffisant</string>
+
+    <!-- Skill -->
+    <string name="titleTechnicalSkill">Evaluation des compétences techniques</string>
+    <string name="titleProfessionSkill">Evaluation des compétences métiers</string>
+    <string name="titleFunctionalSkill">Evaluation des compétences fonctionnelles</string>
+    <string name="titleManagerialSkill">Evaluation des compétences manageriales</string>
+    <string name="titleBehaviouralSkill">Evaluation des compétences comportementales</string>
+    <string name="titleLinguisticSkill">Evaluation des compétences linguistiques</string>
+    <string name="skill1">Compétence n°1</string>
+    <string name="employeeGraduation">Notation Salarié</string>
+    <string name="managerGraduation">Notation Manager</string>
+    <string name="skillExample">Exemples concrets - Commentaires </string>
+    <string name="improvementAndGain">Points forts / A améliorer </string>
+    <string name="skillDynamic">Compétence n°%1$s</string>
+    <string name="skillAutonomy">Autonomie</string>
+    <string name="skillAdaptability">Adaptabilité</string>
+    <string name="skillTeamWork">Travail en équipe</string>
+    <string name="skillCreativity">Créativité, Force de proposition</string>
+    <string name="skillCommunication">Communication (écrite, orale, écoute, empathie)</string>
+    <string name="skillImplication">Implication Astek</string>
+    <string name="skillRespect">Maîtrise de soi, Respect</string>
+    <string name="skillRigour">Rigueur, Organisation, Assiduité</string>
+    <string name="skillEnglish">Anglais</string>
+    <string name="skillOther">Autre langue</string>
+
+    <!-- SkillEvaluation -->
+    <string name="titleSkillEvaluation">Evaluation des compétences du Salarié Année N-1 (par le Manager)</string>
+    <string name="expertise">A - Expertise</string>
+    <string name="autonomousCapacity">B - Capacité autonome</string>
+    <string name="partialCapacity">C - Capacité partielle</string>
+    <string name="notion">D - Notion</string>
+
+    <!-- FutureTarget -->
+    <string name="titleFutureTargetEvaluation">Objectifs année N+1 / Plan d\'actions</string>
+    <string name="futureTargetExplanation">Le plan d’actions concerne aussi bien les activités du salarié, sa montée en compétences ou ses besoins de formations. </string>
+    <string name="futureTarget1">Objectif n°1</string>
+    <string name="evaluationCriteria">Critères d\'évaluations</string>
+    <string name="futureTargetDynamic">Objectif n°%1$s</string>
+
+    <!-- Evolution -->
+    <string name="titleEvolution">Evolution Professionnelle</string>
+    <string name="shortEvolution">A court terme</string>
+    <string name="mediumEvolution">A moyen terme</string>
+    <string name="longEvolution">A long terme</string>
+    <string name="justificationEvolution">Justifications / Motivations</string>
+    <string name="meansEvolution">Moyens à mettre en œuvre pour y arriver (par le salarié / par la société)</string>
+    <string name="mobilityEvolution">Mobilité Géographique</string>
+    <string name="otherEvolution">Autres Activités (tutorat, référent, binôme d\'échange)</string>
+
+
+    <!-- BilanFormation -->
+    <string name="titleBilanFormation">Bilan Formations</string>
+    <string name="formationEntitled">Intitulé</string>
+    <string name="formationDate">Date</string>
+    <string name="formationDuration">Durée</string>
+    <string name="formationInitiative">Initiative</string>
+    <string name="formationEmployer">Employeur</string>
+    <string name="formationEmployee">Salarié</string>
+    <string name="formationImplementation">Mise en œuvre de la Formation / Certification - Bénéfices sur la Mission - Bénéfices dans le metier</string>
+    <string name="formationCommentary">Commentaires</string>
+
+    <!-- WishFormation -->
+    <string name="titleWishFormation">Souhaits de formations / Objectifs de certifications</string>
+    <string name="formationWish">Souhait de formation</string>
+    <string name="formationTarget">Objectif de certification</string>
+    <string name="formationMotivation">Motivations à suivre cette formation</string>
+    <string name="formationModality">Modalités / Durée / Dispositifs de Formation préconisés</string>
+
+    <!-- CPF -->
+    <string name="titleCPF">Compte Personnel de Formation</string>
+    <string name="cpfNumberHours">Nombre d\'heures CPF acquises</string>
+    <string name="cpfDate">A la date du</string>
+    <string name="cpfQuestion">Le collaborateur est-il prêt à utiliser son CPF pour les formations souhaitées ?</string>
+    <string name="cpfCommentary">Commentaires du manager sur les souhaits de formation</string>
+
+    <!-- Synthesis -->
+    <string name="titleSynthesis">Synthèse de l\'entretien par le Manager</string>
+    <string name="notifyManager">Avertir le manager</string>
+    <string name="mailManager">Adresse mail du manager</string>
+    <string name="generateReport">Générer le rapport</string>
+    <string name="mailSubjectEmployee">Support Entretien Annuel de %1$s %2$s</string>
+    <string name="mailTextEmployee">Bonjour, \n \n J\'ai terminé ma partie concernant le support de l\'entretien annuel. \n \n %1$s %2$s</string>
+    <string name="mailTextManager">Bonjour, \n \n Vous trouverez ci-joint le support de l\'entretien annuel complété. \n \n %1$s %2$s</string>
+
 </resources>

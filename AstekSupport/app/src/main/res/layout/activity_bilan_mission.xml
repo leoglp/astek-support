@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+<RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
         android:id="@+id/titleBilanMission"
@@ -16,8 +15,6 @@
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="40dp"/>
-
-
 
     <TextView
         android:id="@+id/bilanExplanation"
@@ -31,45 +28,45 @@
         android:textSize="15sp"/>
 
 
-
-    <EditText
-        android:id="@+id/explanationEditText"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/bilanExplanation"
-        android:background="@drawable/round_outline"
-        android:layout_above="@+id/pageLayout"
-        android:layout_margin="15dp"
-        android:inputType="textCapSentences"
-        android:importantForAutofill="no"
-        tools:ignore="LabelFor" />
+        android:layout_below="@id/bilanExplanation"
+        android:fillViewport="true"
+        >
 
-    <LinearLayout
-        android:id="@+id/pageLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:layout_centerHorizontal="true">
-
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/ic_left_arrow"/>
-
-        <TextView
-            android:id="@+id/pageNumber"
-            android:layout_width="wrap_content"
+        <RelativeLayout
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:textSize="15sp"/>
+            android:layout_width="match_parent">
 
-        <Button
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="15dp"
-            android:background="@drawable/ic_right_arrow"/>
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/explanationEditText"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/bilanExplanation"
+                android:background="@drawable/round_outline_enabled"
+                android:layout_margin="15dp"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:gravity="top|start"
+                tools:ignore="LabelFor"
+                />
+
+            <include layout="@layout/page_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/explanationEditText"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
 
 </RelativeLayout>
+
