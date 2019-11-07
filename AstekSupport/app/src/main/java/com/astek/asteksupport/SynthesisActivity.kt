@@ -53,7 +53,7 @@ class SynthesisActivity : AppCompatActivity() {
 
 
         resultButton.setOnClickListener {
-            if(isManager){
+            /*if(isManager){
                 createOrUpdate()
                 createPdf(this)
             } else {
@@ -63,7 +63,8 @@ class SynthesisActivity : AppCompatActivity() {
                     //createPdf(this)
                     sendMail(this,managerEmailEditText.text.toString())
                 }
-            }
+            }*/
+            createPdf(this)
         }
     }
 

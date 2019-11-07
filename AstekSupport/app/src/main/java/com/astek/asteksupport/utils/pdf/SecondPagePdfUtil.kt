@@ -19,6 +19,7 @@ import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.footer
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.setTextOptions
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.setUnderlineTextOptions
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.writeInterviewPlan
+import com.astek.asteksupport.utils.pdf.ThirdPagePdfUtil.Companion.createThirdPage
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -108,9 +109,17 @@ class SecondPagePdfUtil {
 
             pdfDocument.finishPage(page)
 
-            closeDocument()
+            PdfUtil.createPage(3)
 
-            MailUtil.sendMailWithPdf(activity)
+            //Start Second Page
+            createThirdPage(
+                PdfUtil.getCanvas(),
+                PdfUtil.getTextPaint(),
+                activity,
+                PdfUtil.getPdfDocument(),
+                PdfUtil.getPage()
+            )
+            //MailUtil.sendMailWithPdf(activity)
         }
 
 
