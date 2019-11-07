@@ -72,6 +72,7 @@
     <string name="satisfying">B - Satisfaisant</string>
     <string name="medium">C - Moyen</string>
     <string name="insufficient">D - Insuffisant</string>
+    <string name="commentary">Commentaires</string>
 
     <!-- Skill -->
     <string name="titleTechnicalSkill">Evaluation des compétences techniques</string>

@@ -30,6 +30,8 @@ class PerformanceEvaluationActivity : AppCompatActivity() {
             satisfyingRadioButton.isEnabled = false
             mediumRadioButton.isEnabled = false
             insufficientRadioButton.isEnabled = false
+            commentaryPerformanceEditText.isEnabled = false
+            commentaryPerformanceEditText.background = this.getDrawable(R.drawable.round_outline_disabled)
         }
 
         nextArrow.setOnClickListener{
@@ -37,6 +39,9 @@ class PerformanceEvaluationActivity : AppCompatActivity() {
             if(isManager){
                 if(verySatisfyingRadioButton.isChecked || satisfyingRadioButton.isChecked
                     || mediumRadioButton.isChecked || insufficientRadioButton.isChecked) {
+                    if(commentaryPerformanceEditText.text.toString() == "") {
+                        commentaryPerformanceEditText.setText("/")
+                    }
                     createOrUpdate()
                     UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 } else {
@@ -65,7 +70,8 @@ class PerformanceEvaluationActivity : AppCompatActivity() {
 
     private fun createValueInDB(){
         val performanceEvaluation = hashMapOf(
-            "performanceEvaluation" to getStringValue()
+            "performanceEvaluation" to getStringValue(),
+            "commentary" to commentaryPerformanceEditText.text.toString()
         )
 
         addValueInDataBase(performanceEvaluation, "performanceEvaluation")
@@ -74,7 +80,8 @@ class PerformanceEvaluationActivity : AppCompatActivity() {
     private fun updateValueInDB(){
 
         val performanceEvaluation = hashMapOf(
-            "performanceEvaluation" to getStringValue()
+            "performanceEvaluation" to getStringValue(),
+            "commentary" to commentaryPerformanceEditText.text.toString()
         )
 
         updateValueInDataBase(performanceEvaluation, "performanceEvaluation", documentUpdateId)
@@ -90,6 +97,9 @@ class PerformanceEvaluationActivity : AppCompatActivity() {
                 for (document in result) {
                     if (document.get("performanceEvaluation") != null) {
                         checkedOneButton(document.get("performanceEvaluation").toString())
+                    }
+                    if (document.get("commentary") != null) {
+                        commentaryPerformanceEditText.setText(document.get("commentary").toString())
                     }
                     updateValue = true
                     documentUpdateId = document.id

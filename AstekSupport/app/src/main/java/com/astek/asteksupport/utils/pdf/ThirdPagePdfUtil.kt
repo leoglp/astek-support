@@ -194,9 +194,8 @@ class ThirdPagePdfUtil {
         }
 
         private fun writeCommentary(text: String) {
-            val firstTitle = "Commentaires"
             textPaint.set(setUnderlineTextOptions(Color.BLACK, Typeface.BOLD, 14F))
-            drawText(firstTitle, 555, 20F, 560F, 1.0F, false)
+            drawText(activity.getString(R.string.commentary), 555, 20F, 560F, 1.0F, false)
 
             val rect = Rect(20, 590, 580, 700)
             canvas.drawRect(rect, borderRectangleOptions())

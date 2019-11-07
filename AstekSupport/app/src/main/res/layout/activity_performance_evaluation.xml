@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -18,7 +19,7 @@
 
 
     <RadioGroup
-        android:id="@+id/skillEvaluationRadioGroup"
+        android:id="@+id/performanceEvaluationRadioGroup"
         android:layout_below="@id/titleSkillEvaluation"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
@@ -31,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="@string/verySatisfying"
             android:id="@+id/verySatisfyingRadioButton"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             android:textSize="20sp"
             />
 
@@ -64,10 +65,40 @@
             android:checked="false" />
     </RadioGroup>
 
+
+    <TextView
+        android:id="@+id/commentaryPerformance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/commentary"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="30dp"
+        android:layout_below="@id/performanceEvaluationRadioGroup"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/commentaryPerformanceEditText"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@+id/commentaryPerformance"
+        android:background="@drawable/round_outline_enabled"
+        android:layout_margin="15dp"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:overScrollMode="always"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:gravity="top|start"
+        android:importantForAutofill="no"
+        tools:ignore="LabelFor"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        />
+
     <include layout="@layout/page_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/insufficientRadioButton"/>
+        android:layout_below="@+id/commentaryPerformanceEditText"/>
 
 
 </RelativeLayout>
