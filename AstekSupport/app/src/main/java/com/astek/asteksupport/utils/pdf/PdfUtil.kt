@@ -10,9 +10,10 @@ import android.text.Layout
 import android.text.StaticLayout
 import android.text.TextPaint
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.core.graphics.withTranslation
 import com.astek.asteksupport.R
+import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeName
+import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeSurname
 import com.astek.asteksupport.utils.pdf.FirstPagePdfUtil.Companion.createFirstPage
 import java.io.File
 import java.io.FileOutputStream
@@ -31,8 +32,6 @@ class PdfUtil {
         @SuppressLint("StaticFieldLeak")
         private lateinit var activity: Activity
 
-
-        @RequiresApi(Build.VERSION_CODES.O)
         fun createPdf(activity: Activity) {
 
             this.activity = activity
@@ -263,15 +262,15 @@ class PdfUtil {
             // finish the page
 
             // write the document content
-            val directoryPath = Environment.getExternalStorageDirectory().path + "/mypdf/"
+            val directoryPath = Environment.getExternalStorageDirectory().path + "/astek_support_pdf/"
             val file = File(directoryPath)
             if (!file.exists()) {
                 file.mkdirs()
             }
-            val targetPdf = directoryPath + "test-2.pdf"
+            val targetPdf = directoryPath + employeeName + "_" + employeeSurname + ".pdf"
             val filePath = File(targetPdf)
             try {
-                Log.d("TITI","done")
+                Log.d(TAG,"done")
                 pdfDocument.writeTo(FileOutputStream(filePath))
             } catch (e: IOException) {
                 Log.e("main", "error $e")
@@ -296,6 +295,9 @@ class PdfUtil {
         fun getCanvas(): Canvas {
             return canvas
         }
+
+        private const val TAG = "PDFUtil"
+
 
     }
 

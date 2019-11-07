@@ -6,6 +6,9 @@ import android.util.Log
 import android.view.View
 import com.astek.asteksupport.R
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeDocumentId
+import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeMail
+import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeName
+import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeSurname
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.isManager
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.managerDocumentId
 import com.astek.asteksupport.utils.UIUtil.Companion.goToPage
@@ -87,10 +90,25 @@ class DataBaseUtil {
                     }
 
                     if(emailAddress != "") {
-                        goToPage("1", activity)
+                        getNameAndSurname(activity)
                     } else {
                         showMessage(view, activity.getString(R.string.err_no_person))
                     }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d(TAG, "Error getting documents.", exception)
+                }
+        }
+
+        private fun getNameAndSurname(activity: Activity) {
+            db.collection("users")
+                .document(employeeDocumentId)
+                .get()
+                .addOnSuccessListener { result ->
+                    employeeName = result.get("name").toString()
+                    employeeSurname = result.get("surname").toString()
+                    employeeMail = result.get("mail").toString()
+                    goToPage("1", activity)
                 }
                 .addOnFailureListener { exception ->
                     Log.d(TAG, "Error getting documents.", exception)

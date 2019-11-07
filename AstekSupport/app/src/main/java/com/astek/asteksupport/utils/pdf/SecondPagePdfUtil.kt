@@ -11,6 +11,7 @@ import android.text.TextPaint
 import android.util.Log
 import com.astek.asteksupport.R
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeDocumentId
+import com.astek.asteksupport.utils.MailUtil
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.borderRectangleOptions
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.closeDocument
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.drawText
@@ -108,6 +109,8 @@ class SecondPagePdfUtil {
             pdfDocument.finishPage(page)
 
             closeDocument()
+
+            MailUtil.sendMailWithPdf(activity)
         }
 
 

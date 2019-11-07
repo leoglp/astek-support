@@ -267,6 +267,8 @@ class WishFormationActivity : AppCompatActivity() {
                             modalityEditText3.setText(document.get("modality3").toString())
                         }
                     }
+                    updateValue = true
+                    documentUpdateId = document.id
                     updateTargetView()
                 }
             }

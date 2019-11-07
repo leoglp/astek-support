@@ -19,52 +19,59 @@ class AuthenticationUtil {
 
         private const val TAG = "AuthenticationUtil"
 
-        var isManager : Boolean = false
+        var isManager: Boolean = false
         var employeeDocumentId: String = ""
         var managerDocumentId: String = ""
+        var employeeName = ""
+        var employeeSurname = ""
+        var managerName = ""
+        var managerSurname = ""
+        var employeeMail = ""
 
 
         private val fbAuth = FirebaseAuth.getInstance()
 
-        fun signIn(activity: Activity, view: View, email: String, password: String){
-            showMessage(view,activity.getString(R.string.authentication))
+        fun signIn(activity: Activity, view: View, email: String, password: String) {
+            showMessage(view, activity.getString(R.string.authentication))
 
-            fbAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(activity) { task ->
-                if(task.isSuccessful) {
-                    val db = FirebaseFirestore.getInstance()
+            fbAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(activity) { task ->
+                    if (task.isSuccessful) {
+                        val db = FirebaseFirestore.getInstance()
 
-                    db.collection("users")
-                        .get()
-                        .addOnSuccessListener { result ->
-                            for (document in result) {
+                        db.collection("users")
+                            .get()
+                            .addOnSuccessListener { result ->
+                                for (document in result) {
 
-                                if(document.get("mail") == fbAuth.currentUser?.email) {
-                                    if(document.get("profilFunction") == "manager"){
-                                        managerDocumentId = document.id
-                                        isManager = true
-                                        goToPage("-1", activity)
-                                    } else {
-                                        employeeDocumentId = document.id
-                                        isManager = false
-                                        readAndGoToPage(activity)
+                                    if (document.get("mail") == fbAuth.currentUser?.email) {
+                                        if (document.get("profilFunction") == "manager") {
+                                            managerName = document.get("name").toString()
+                                            managerSurname = document.get("surname").toString()
+                                            managerDocumentId = document.id
+                                            isManager = true
+                                            goToPage("-1", activity)
+                                        } else {
+                                            employeeDocumentId = document.id
+                                            isManager = false
+                                            readAndGoToPage(activity)
+                                            employeeName = document.get("name").toString()
+                                            employeeSurname = document.get("surname").toString()
+                                            employeeMail = document.get("mail").toString()
+                                        }
                                     }
                                 }
                             }
-                        }
-                        .addOnFailureListener { exception ->
-                            android.util.Log.d(TAG, "Error getting documents.", exception)
-                        }
+                            .addOnFailureListener { exception ->
+                                android.util.Log.d(TAG, "Error getting documents.", exception)
+                            }
 
-                } else {
-                    showMessage(view,"Error: ${task.exception?.message}")
+                    } else {
+                        showMessage(view, "Error: ${task.exception?.message}")
+                    }
                 }
-            }
 
         }
-
-
-
-
 
         fun createUser(activity: Activity, view: View, email: String, password: String){
 
@@ -80,6 +87,7 @@ class AuthenticationUtil {
             }
         }
 
-
     }
+
+
 }

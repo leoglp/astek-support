@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
 
-    var permissions = arrayOf<String>(
+    private var permissions = arrayOf<String>(
         Manifest.permission.INTERNET,
         Manifest.permission.READ_PHONE_STATE,
         Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -33,12 +33,12 @@ class MainActivity : AppCompatActivity() {
 
         connectButton.setOnClickListener{
             hideKeyboard(this,it)
-            signIn(this,it,"m@mail.com", "123456")
-            /*if(mailEditText.text.toString().isEmpty() || passwordEditText.text.toString().isEmpty()) {
+            //signIn(this,it,"m@mail.com", "123456")
+            if(mailEditText.text.toString().isEmpty() || passwordEditText.text.toString().isEmpty()) {
                 UIUtil.showMessage(it, this.getString(R.string.err_no_input))
             } else {
                 signIn(this,it,mailEditText.text.toString(), passwordEditText.text.toString())
-            }*/
+            }
         }
 
         subscribeText.setOnClickListener{

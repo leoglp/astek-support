@@ -8,9 +8,10 @@ import com.astek.asteksupport.utils.AuthenticationUtil
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.isManager
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.addValueInDataBase
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
-import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.createPdf
+import com.astek.asteksupport.utils.MailUtil.Companion.sendMail
 import com.astek.asteksupport.utils.UIUtil
 import com.astek.asteksupport.utils.UIUtil.Companion.backToHome
+import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.createPdf
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_synthesis.*
 import kotlinx.android.synthetic.main.page_layout.*
@@ -53,18 +54,17 @@ class SynthesisActivity : AppCompatActivity() {
 
         resultButton.setOnClickListener {
             if(isManager){
-
+                createOrUpdate()
+                createPdf(this)
             } else {
-                //if(managerEmailEditText.text.toString().isEmpty()){
-                  //  UIUtil.showMessage(it, this.getString(R.string.err_no_input))
-                //} else {
-                    createPdf(this)
-                    //sendMail(this,managerEmailEditText.text.toString())
-                //}
+                if(managerEmailEditText.text.toString().isEmpty()){
+                    UIUtil.showMessage(it, this.getString(R.string.err_no_input))
+                } else {
+                    //createPdf(this)
+                    sendMail(this,managerEmailEditText.text.toString())
+                }
             }
         }
-
-
     }
 
 
