@@ -31,6 +31,8 @@
     <string name="creation">Création du profil…</string>
     <string name="err_no_input">Veuillez remplir tous les champs.</string>
     <string name="err_no_checked">Veuillez cocher une valeur.</string>
+    <string name="err_graduation">La note doit être entre 1 et 4.</string>
+
     <string name="err_no_person">Aucune personne de ce nom n\'a été trouvée.</string>
     <string name="graduationInfo">1- Très Satisfaisant / 2 - Satisfaisant / 3 - Moyen / 4 – Insuffisant</string>
     <string name="yes">OUI</string>

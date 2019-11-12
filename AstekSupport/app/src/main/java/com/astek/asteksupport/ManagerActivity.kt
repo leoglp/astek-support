@@ -29,8 +29,6 @@ class ManagerActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        logout.setOnClickListener{
-            UIUtil.backToHome(this)
-        }
+        UIUtil.backToHome(this)
     }
 }

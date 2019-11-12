@@ -318,22 +318,10 @@ class ManagerialSkillActivity : AppCompatActivity() {
         }
     }
 
-
-
     private fun updateTargetView() {
         if(numberTarget == 2) {
-            skill2.visibility = View.VISIBLE
-            skill2EditText.visibility = View.VISIBLE
-            employeeGraduationLayout2.visibility = View.VISIBLE
-            managerGraduationLayout2.visibility = View.VISIBLE
-            skillExample2.visibility = View.VISIBLE
-            skillExampleEditText2.visibility = View.VISIBLE
-            improvementAndGain2.visibility = View.VISIBLE
-            improvementAndGainEditText2.visibility = View.VISIBLE
-            skill2.text = this.getString(R.string.skillDynamic,"2")
-        }
-        if(numberTarget == 3) {
             addTarget.visibility = View.GONE
+
             skill2.visibility = View.VISIBLE
             skill2EditText.visibility = View.VISIBLE
             employeeGraduationLayout2.visibility = View.VISIBLE
@@ -342,17 +330,7 @@ class ManagerialSkillActivity : AppCompatActivity() {
             skillExampleEditText2.visibility = View.VISIBLE
             improvementAndGain2.visibility = View.VISIBLE
             improvementAndGainEditText2.visibility = View.VISIBLE
-
-            skill3.visibility = View.VISIBLE
-            skill3EditText.visibility = View.VISIBLE
-            employeeGraduationLayout3.visibility = View.VISIBLE
-            managerGraduationLayout3.visibility = View.VISIBLE
-            skillExample3.visibility = View.VISIBLE
-            skillExampleEditText3.visibility = View.VISIBLE
-            improvementAndGain3.visibility = View.VISIBLE
-            improvementAndGainEditText3.visibility = View.VISIBLE
             skill2.text = this.getString(R.string.skillDynamic,"2")
-            skill3.text = this.getString(R.string.skillDynamic,"3")
         }
     }
 
@@ -361,6 +339,7 @@ class ManagerialSkillActivity : AppCompatActivity() {
             numberTarget++
             if(numberTarget == 2) {
                 deleteTarget.visibility = View.VISIBLE
+                addTarget.visibility = View.GONE
 
                 skill2.visibility = View.VISIBLE
                 skill2EditText.visibility = View.VISIBLE
@@ -373,25 +352,12 @@ class ManagerialSkillActivity : AppCompatActivity() {
 
                 skill2.text = this.getString(R.string.skillDynamic,"2")
             }
-            if(numberTarget == 3) {
-                addTarget.visibility = View.GONE
-
-                skill3.visibility = View.VISIBLE
-                skill3EditText.visibility = View.VISIBLE
-                employeeGraduationLayout3.visibility = View.VISIBLE
-                managerGraduationLayout3.visibility = View.VISIBLE
-                skillExample3.visibility = View.VISIBLE
-                skillExampleEditText3.visibility = View.VISIBLE
-                improvementAndGain3.visibility = View.VISIBLE
-                improvementAndGainEditText3.visibility = View.VISIBLE
-
-                skill3.text = this.getString(R.string.skillDynamic,"3")
-
-            }
         } else {
             numberTarget--
             if(numberTarget == 1) {
                 deleteTarget.visibility = View.GONE
+                addTarget.visibility = View.VISIBLE
+
                 skill2.visibility = View.GONE
                 skill2EditText.visibility = View.GONE
                 employeeGraduationLayout2.visibility = View.GONE
@@ -401,21 +367,8 @@ class ManagerialSkillActivity : AppCompatActivity() {
                 improvementAndGain2.visibility = View.GONE
                 improvementAndGainEditText2.visibility = View.GONE
             }
-            if(numberTarget == 2) {
-                addTarget.visibility = View.VISIBLE
-
-                skill3.visibility = View.GONE
-                skill3EditText.visibility = View.GONE
-                employeeGraduationLayout3.visibility = View.GONE
-                managerGraduationLayout3.visibility = View.GONE
-                skillExample3.visibility = View.GONE
-                skillExampleEditText3.visibility = View.GONE
-                improvementAndGain3.visibility = View.GONE
-                improvementAndGainEditText3.visibility = View.GONE
-            }
         }
     }
-
 
     private fun checkField(numberTarget: Int , it: View){
 
@@ -427,8 +380,13 @@ class ManagerialSkillActivity : AppCompatActivity() {
                     || improvementAndGainEditText1.text.toString().isEmpty()) {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
-                    createOrUpdate()
-                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                    if(managerGraduationEditText1.text.toString().toInt() in 1..4
+                        && employeeGraduationEditText1.text.toString().toInt() in 1..4) {
+                        createOrUpdate()
+                        UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                    } else {
+                        showMessage(it, this.getString(R.string.err_graduation))
+                    }
                 }
 
 
@@ -440,24 +398,15 @@ class ManagerialSkillActivity : AppCompatActivity() {
                     || improvementAndGainEditText2.text.toString().isEmpty()) {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
-                    createOrUpdate()
-                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
-                }
-
-
-                3 -> if(skill1EditText.text.toString().isEmpty() || employeeGraduationEditText1.text.toString().isEmpty()
-                    || managerGraduationEditText1.text.toString().isEmpty() || skillExampleEditText1.text.toString().isEmpty()
-                    || improvementAndGainEditText1.text.toString().isEmpty()
-                    || skill2EditText.text.toString().isEmpty() || employeeGraduationEditText2.text.toString().isEmpty()
-                    || managerGraduationEditText2.text.toString().isEmpty() || skillExampleEditText2.text.toString().isEmpty()
-                    || improvementAndGainEditText2.text.toString().isEmpty()
-                    || skill3EditText.text.toString().isEmpty() || employeeGraduationEditText3.text.toString().isEmpty()
-                    || managerGraduationEditText3.text.toString().isEmpty() || skillExampleEditText3.text.toString().isEmpty()
-                    || improvementAndGainEditText3.text.toString().isEmpty()) {
-                    showMessage(it, this.getString(R.string.err_no_input))
-                } else {
-                    createOrUpdate()
-                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                    if(managerGraduationEditText1.text.toString().toInt() in 1..4
+                        && employeeGraduationEditText1.text.toString().toInt() in 1..4
+                        && managerGraduationEditText2.text.toString().toInt() in 1..4
+                        && employeeGraduationEditText2.text.toString().toInt() in 1..4) {
+                        createOrUpdate()
+                        UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                    } else {
+                        showMessage(it, this.getString(R.string.err_graduation))
+                    }
                 }
             }
         } else {
@@ -466,8 +415,12 @@ class ManagerialSkillActivity : AppCompatActivity() {
                    || skillExampleEditText1.text.toString().isEmpty()) {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
-                    createOrUpdate()
-                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                    if(employeeGraduationEditText1.text.toString().toInt() in 1..4) {
+                        createOrUpdate()
+                        UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                    } else {
+                        showMessage(it, this.getString(R.string.err_graduation))
+                    }
                 }
 
 
@@ -477,21 +430,14 @@ class ManagerialSkillActivity : AppCompatActivity() {
                     ||  skillExampleEditText2.text.toString().isEmpty()) {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
-                    createOrUpdate()
-                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                    if(employeeGraduationEditText1.text.toString().toInt() in 1..4
+                        && employeeGraduationEditText2.text.toString().toInt() in 1..4) {
+                        createOrUpdate()
+                        UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                    } else {
+                        showMessage(it, this.getString(R.string.err_graduation))
+                    }
                 }
-
-
-                3 -> if(skill1EditText.text.toString().isEmpty() || employeeGraduationEditText1.text.toString().isEmpty()
-                    || skillExampleEditText1.text.toString().isEmpty()
-                    || skill2EditText.text.toString().isEmpty() || employeeGraduationEditText2.text.toString().isEmpty()
-                    || skillExampleEditText2.text.toString().isEmpty()
-                    || skill3EditText.text.toString().isEmpty() || employeeGraduationEditText3.text.toString().isEmpty()
-                    || skillExampleEditText3.text.toString().isEmpty()) {
-                    showMessage(it, this.getString(R.string.err_no_input))
-                } else {
-                    createOrUpdate()
-                    UIUtil.goToNextPage(this, this.javaClass.simpleName)                }
             }
         }
     }

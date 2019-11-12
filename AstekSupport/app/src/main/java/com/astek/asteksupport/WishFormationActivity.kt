@@ -44,10 +44,6 @@ class WishFormationActivity : AppCompatActivity() {
             targetFormationEditText2.background = this.getDrawable(R.drawable.round_outline_disabled)
             modalityEditText2.isEnabled = false
             modalityEditText2.background = this.getDrawable(R.drawable.round_outline_disabled)
-            targetFormationEditText3.isEnabled = false
-            targetFormationEditText3.background = this.getDrawable(R.drawable.round_outline_disabled)
-            modalityEditText3.isEnabled = false
-            modalityEditText3.background = this.getDrawable(R.drawable.round_outline_disabled)
         }
 
         nextArrow.setOnClickListener{
@@ -101,24 +97,6 @@ class WishFormationActivity : AppCompatActivity() {
                 "modality2" to modalityEditText2.text.toString(),
 
                 "numberTarget" to numberTarget.toString())
-
-            3 -> wishFormation = hashMapOf(
-                "wish1" to wishEditText1.text.toString(),
-                "target1" to targetFormationEditText1.text.toString(),
-                "motivation1" to motivationEditText1.text.toString(),
-                "modality1" to modalityEditText1.text.toString(),
-
-                "wish2" to wishEditText2.text.toString(),
-                "target2" to targetFormationEditText2.text.toString(),
-                "motivation2" to motivationEditText2.text.toString(),
-                "modality2" to modalityEditText2.text.toString(),
-
-                "wish3" to wishEditText3.text.toString(),
-                "target3" to targetFormationEditText3.text.toString(),
-                "motivation3" to motivationEditText3.text.toString(),
-                "modality3" to modalityEditText3.text.toString(),
-
-                "numberTarget" to numberTarget.toString())
         }
 
 
@@ -147,24 +125,6 @@ class WishFormationActivity : AppCompatActivity() {
                 "target2" to targetFormationEditText2.text.toString(),
                 "motivation2" to motivationEditText2.text.toString(),
                 "modality2" to modalityEditText2.text.toString(),
-
-                "numberTarget" to numberTarget.toString())
-
-            3 -> wishFormation = hashMapOf(
-                "wish1" to wishEditText1.text.toString(),
-                "target1" to targetFormationEditText1.text.toString(),
-                "motivation1" to motivationEditText1.text.toString(),
-                "modality1" to modalityEditText1.text.toString(),
-
-                "wish2" to wishEditText2.text.toString(),
-                "target2" to targetFormationEditText2.text.toString(),
-                "motivation2" to motivationEditText2.text.toString(),
-                "modality2" to modalityEditText2.text.toString(),
-
-                "wish3" to wishEditText3.text.toString(),
-                "target3" to targetFormationEditText3.text.toString(),
-                "motivation3" to motivationEditText3.text.toString(),
-                "modality3" to modalityEditText3.text.toString(),
 
                 "numberTarget" to numberTarget.toString())
         }
@@ -226,47 +186,6 @@ class WishFormationActivity : AppCompatActivity() {
                             modalityEditText2.setText(document.get("modality2").toString())
                         }
                     }
-
-                    else if (numberTarget == 3){
-                        if (document.get("wish1") != null) {
-                            wishEditText1.setText(document.get("wish1").toString())
-                        }
-                        if (document.get("target1") != null) {
-                            targetFormationEditText1.setText(document.get("target1").toString())
-                        }
-                        if (document.get("motivation1") != null) {
-                            motivationEditText1.setText(document.get("motivation1").toString())
-                        }
-                        if (document.get("modality1") != null) {
-                            modalityEditText1.setText(document.get("modality1").toString())
-                        }
-
-                        if (document.get("wish2") != null) {
-                            wishEditText2.setText(document.get("wish2").toString())
-                        }
-                        if (document.get("target2") != null) {
-                            targetFormationEditText2.setText(document.get("target2").toString())
-                        }
-                        if (document.get("motivation2") != null) {
-                            motivationEditText2.setText(document.get("motivation2").toString())
-                        }
-                        if (document.get("modality2") != null) {
-                            modalityEditText2.setText(document.get("modality2").toString())
-                        }
-
-                        if (document.get("wish3") != null) {
-                            wishEditText3.setText(document.get("wish3").toString())
-                        }
-                        if (document.get("target3") != null) {
-                            targetFormationEditText3.setText(document.get("target3").toString())
-                        }
-                        if (document.get("motivation3") != null) {
-                            motivationEditText3.setText(document.get("motivation3").toString())
-                        }
-                        if (document.get("modality3") != null) {
-                            modalityEditText3.setText(document.get("modality3").toString())
-                        }
-                    }
                     updateValue = true
                     documentUpdateId = document.id
                     updateTargetView()
@@ -293,17 +212,6 @@ class WishFormationActivity : AppCompatActivity() {
     private fun updateTargetView() {
         if(numberTarget == 2) {
             deleteTarget.visibility = View.VISIBLE
-
-            wish2.visibility = View.VISIBLE
-            wishEditText2.visibility = View.VISIBLE
-            targetFormation2.visibility = View.VISIBLE
-            targetFormationEditText2.visibility = View.VISIBLE
-            motivation2.visibility = View.VISIBLE
-            motivationEditText2.visibility = View.VISIBLE
-            modality2.visibility = View.VISIBLE
-            modalityEditText2.visibility = View.VISIBLE
-        }
-        if(numberTarget == 3) {
             addTarget.visibility = View.GONE
 
             wish2.visibility = View.VISIBLE
@@ -314,15 +222,6 @@ class WishFormationActivity : AppCompatActivity() {
             motivationEditText2.visibility = View.VISIBLE
             modality2.visibility = View.VISIBLE
             modalityEditText2.visibility = View.VISIBLE
-
-            wish3.visibility = View.VISIBLE
-            wishEditText3.visibility = View.VISIBLE
-            targetFormation3.visibility = View.VISIBLE
-            targetFormationEditText3.visibility = View.VISIBLE
-            motivation3.visibility = View.VISIBLE
-            motivationEditText3.visibility = View.VISIBLE
-            modality3.visibility = View.VISIBLE
-            modalityEditText3.visibility = View.VISIBLE
         }
     }
 
@@ -331,6 +230,7 @@ class WishFormationActivity : AppCompatActivity() {
             numberTarget++
             if(numberTarget == 2) {
                 deleteTarget.visibility = View.VISIBLE
+                addTarget.visibility = View.GONE
 
                 wish2.visibility = View.VISIBLE
                 wishEditText2.visibility = View.VISIBLE
@@ -341,22 +241,11 @@ class WishFormationActivity : AppCompatActivity() {
                 modality2.visibility = View.VISIBLE
                 modalityEditText2.visibility = View.VISIBLE
             }
-            if(numberTarget == 3) {
-                addTarget.visibility = View.GONE
-
-                wish3.visibility = View.VISIBLE
-                wishEditText3.visibility = View.VISIBLE
-                targetFormation3.visibility = View.VISIBLE
-                targetFormationEditText3.visibility = View.VISIBLE
-                motivation3.visibility = View.VISIBLE
-                motivationEditText3.visibility = View.VISIBLE
-                modality3.visibility = View.VISIBLE
-                modalityEditText3.visibility = View.VISIBLE
-            }
         } else {
             numberTarget--
             if(numberTarget == 1) {
                 deleteTarget.visibility = View.GONE
+                addTarget.visibility = View.VISIBLE
 
                 wish2.visibility = View.GONE
                 wishEditText2.visibility = View.GONE
@@ -366,18 +255,6 @@ class WishFormationActivity : AppCompatActivity() {
                 motivationEditText2.visibility = View.GONE
                 modality2.visibility = View.GONE
                 modalityEditText2.visibility = View.GONE
-            }
-            if(numberTarget == 2) {
-                addTarget.visibility = View.VISIBLE
-
-                wish3.visibility = View.GONE
-                wishEditText3.visibility = View.GONE
-                targetFormation3.visibility = View.GONE
-                targetFormationEditText3.visibility = View.GONE
-                motivation3.visibility = View.GONE
-                motivationEditText3.visibility = View.GONE
-                modality3.visibility = View.GONE
-                modalityEditText3.visibility = View.GONE
             }
         }
     }
@@ -405,19 +282,6 @@ class WishFormationActivity : AppCompatActivity() {
                     createOrUpdate()
                     UIUtil.goToNextPage(this, this.javaClass.simpleName)
                 }
-
-
-                3 -> if(wishEditText1.text.toString().isEmpty() || targetFormationEditText1.text.toString().isEmpty()
-                    || motivationEditText1.text.toString().isEmpty() || modalityEditText1.text.toString().isEmpty()
-                    || wishEditText2.text.toString().isEmpty() || targetFormationEditText2.text.toString().isEmpty()
-                    || motivationEditText2.text.toString().isEmpty() || modalityEditText2.text.toString().isEmpty()
-                    || wishEditText3.text.toString().isEmpty() || targetFormationEditText3.text.toString().isEmpty()
-                    || motivationEditText3.text.toString().isEmpty() || modalityEditText3.text.toString().isEmpty()) {
-                    showMessage(it, this.getString(R.string.err_no_input))
-                } else {
-                    createOrUpdate()
-                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
-                }
             }
         } else {
             when (numberTarget) {
@@ -431,16 +295,6 @@ class WishFormationActivity : AppCompatActivity() {
 
                 2 -> if(wishEditText1.text.toString().isEmpty() || motivationEditText1.text.toString().isEmpty()
                     || wishEditText2.text.toString().isEmpty() || motivationEditText2.text.toString().isEmpty()) {
-                    showMessage(it, this.getString(R.string.err_no_input))
-                } else {
-                    createOrUpdate()
-                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
-                }
-
-
-                3 -> if(wishEditText1.text.toString().isEmpty() || motivationEditText1.text.toString().isEmpty()
-                    || wishEditText2.text.toString().isEmpty() || motivationEditText2.text.toString().isEmpty()
-                    || wishEditText3.text.toString().isEmpty()  || motivationEditText3.text.toString().isEmpty() ) {
                     showMessage(it, this.getString(R.string.err_no_input))
                 } else {
                     createOrUpdate()

@@ -126,16 +126,25 @@ class EnglishSkillActivity : AppCompatActivity() {
                 || improvementAndGainEditText1.text.toString().isEmpty()) {
                 showMessage(it, this.getString(R.string.err_no_input))
             } else {
-                createOrUpdate()
-                UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                if(managerGraduationEditText1.text.toString().toInt() in 1..4
+                    && employeeGraduationEditText1.text.toString().toInt() in 1..4) {
+                    createOrUpdate()
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                } else {
+                    showMessage(it, this.getString(R.string.err_graduation))
+                }
             }
         } else {
             if(employeeGraduationEditText1.text.toString().isEmpty()
                 || skillExampleEditText1.text.toString().isEmpty()) {
                 showMessage(it, this.getString(R.string.err_no_input))
             } else {
-                createOrUpdate()
-                UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                if(employeeGraduationEditText1.text.toString().toInt() in 1..4) {
+                    createOrUpdate()
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                } else {
+                    showMessage(it, this.getString(R.string.err_graduation))
+                }
             }
         }
     }

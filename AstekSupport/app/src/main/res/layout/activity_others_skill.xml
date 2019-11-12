@@ -16,10 +16,22 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="40dp"/>
 
-    <include layout="@layout/multiple_skills_layout"
+    <TextView
+        android:id="@+id/skill1"
+        android:layout_below="@id/titleSkill"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/skillOther"
+        android:textColor="@color/red"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="25dp"
+        android:textSize="23sp"
+        android:textAlignment="center"/>
+
+    <include layout="@layout/behaviour_skill_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/titleSkill"
+        android:layout_below="@+id/skill1"
         />
 
 </RelativeLayout>
