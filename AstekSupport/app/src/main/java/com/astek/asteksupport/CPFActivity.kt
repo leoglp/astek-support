@@ -120,12 +120,12 @@ class CPFActivity : AppCompatActivity() {
         return if(yesRadioButton.isChecked) {
             "OUI"
         } else {
-            "NO"
+            "NON"
         }
     }
 
     private fun checkedOneButton(value: String){
-        if(value == "YES") {
+        if(value == "OUI") {
             yesRadioButton.isChecked = true
         } else {
             noRadioButton.isChecked = true

@@ -311,6 +311,8 @@ class BilanFormationActivity : AppCompatActivity() {
                             commentaryEditText3.setText(document.get("commentary3").toString())
                         }
                     }
+                    updateValue = true
+                    documentUpdateId = document.id
                     updateTargetView()
                 }
             }

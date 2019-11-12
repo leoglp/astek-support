@@ -190,22 +190,38 @@ class PdfUtil {
 
             //First Rectangle
             canvas.drawRect(firstRect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 10F))
+            if(planNumber == 1) {
+                textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 10F))
+            } else {
+                textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
+            }
             drawText(info1,109,80F,115F,1.0F,true)
 
             //Second Rectangle
             canvas.drawRect(secondRect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
+            if(planNumber == 2) {
+                textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 10F))
+            } else {
+                textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
+            }
             drawText(info2,109,189F,115F,1.0F,true)
 
             //Third Rectangle
             canvas.drawRect(thirdRect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
+            if(planNumber == 3) {
+                textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 10F))
+            } else {
+                textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
+            }
             drawText(info3,109,298F,115F,1.0F,true)
 
             //Fourth Rectangle
             canvas.drawRect(fourthRect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
+            if(planNumber == 4) {
+                textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 10F))
+            } else {
+                textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
+            }
             drawText(info4,109,407F,115F,1.0F,true)
 
 

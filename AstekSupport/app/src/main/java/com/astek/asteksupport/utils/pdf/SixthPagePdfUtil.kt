@@ -19,6 +19,7 @@ import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.footer
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.setTextOptions
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.setUnderlineTextOptions
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.writeInterviewPlan
+import com.astek.asteksupport.utils.pdf.SeventhPagePdfUtil.Companion.createSeventhPage
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
@@ -198,7 +199,10 @@ class SixthPagePdfUtil {
                         // finish the page
                         pdfDocument.finishPage(page)
 
-                        closeDocument()
+                        PdfUtil.createPage(7)
+
+                        //Start Fourth Page
+                        createSeventhPage(PdfUtil.getCanvas(), PdfUtil.getTextPaint(), activity, PdfUtil.getPdfDocument(), PdfUtil.getPage())
                     }
                 }
                 .addOnFailureListener { exception ->

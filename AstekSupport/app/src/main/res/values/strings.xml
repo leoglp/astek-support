@@ -187,8 +187,14 @@
     <string name="pdfProfessionalTarget">Objectifs Professionels</string>
     <string name="pdfOthersWishes">Autres Souhaits</string>
 
-
-
+    <!-- SeventhPage -->
+    <string name="pdfInfoPage7"> Afin de vous accompagner dans votre évolution professionnelle et sur vos futures formations,
+        merci de dresser un bilan des formations et des certifications suivies.</string>
+    <!-- SeventhPage -->
+    <string name="pdfFormations">Formations / Certifications</string>
+    <string name="pdfFormationImplementation">Mise en œuvre de la Formation / Certification \n - Bénéfices sur la Mission \n - Bénéfices dans le metier</string>
+    <string name="pdfCertificationWish">SOUHAITS DE FORMATIONS / </string>
+    <string name="pdfCertificationTarget">OBJECTIFS DE CERTIFICATIONS</string>
 
 
 
