@@ -11,6 +11,7 @@ import android.text.TextPaint
 import android.util.Log
 import com.astek.asteksupport.R
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeDocumentId
+import com.astek.asteksupport.utils.pdf.FourthPagePdfUtil.Companion.createFourthPage
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.borderRectangleOptions
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.closeDocument
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.drawText
@@ -54,11 +55,11 @@ class ThirdPagePdfUtil {
 
             footer("3")
 
-            writeInterviewPlan()
+            writeInterviewPlan(1)
 
             val firstTitle = "EVALUATION DES OBJECTIFS FIXES EAE ANNEE N-1"
             textPaint.set(setUnderlineTextOptions(activity.getColor(R.color.red), Typeface.BOLD, 14F))
-            drawText(firstTitle, 555, 20F, 160F, 1.0F, false)
+            drawText(firstTitle, 555, 20F, 150F, 1.0F, false)
 
             //Title Left Rectangle
             val leftTitle = "Rappel des objectifs"
@@ -204,7 +205,10 @@ class ThirdPagePdfUtil {
 
             pdfDocument.finishPage(page)
 
-            closeDocument()
+            PdfUtil.createPage(4)
+
+            //Start Fourth Page
+            createFourthPage(PdfUtil.getCanvas(), PdfUtil.getTextPaint(), activity, PdfUtil.getPdfDocument(), PdfUtil.getPage())
         }
 
 

@@ -53,16 +53,16 @@ class SecondPagePdfUtil {
 
             footer("2")
 
-            writeInterviewPlan()
+            writeInterviewPlan(1)
 
             val firstTitle = "BILAN DES MISSIONS / PROJETS DE L’ANNEE ECOULEE"
-            textPaint.set(setUnderlineTextOptions(activity.getColor(R.color.yellowPdf), Typeface.BOLD, 14F))
-            drawText(firstTitle, 555, 20F, 160F,1.0F, false)
+            textPaint.set(setUnderlineTextOptions(activity.getColor(R.color.blue), Typeface.BOLD, 14F))
+            drawText(firstTitle, 555, 20F, 150F,1.0F, false)
 
             val firstInfo = "Décrire succinctement les activités confiées, les compétences mises en œuvre et " +
                     "les résultats obtenus (Client, Période, Rôle occupé, Responsabilité, Environnement Technique et Fonctionnel)"
             textPaint.set(setTextOptions(Color.BLACK, Typeface.ITALIC, 12F))
-            drawText(firstInfo, 555, 20F, 190F, 1.0F, false)
+            drawText(firstInfo, 555, 20F, 180F, 1.0F, false)
 
 
             //First Rectangle
@@ -78,7 +78,7 @@ class SecondPagePdfUtil {
             drawText(value, 555, 25F, 233F, 1.3F, false)
 
             val secondInfo = "Appréciation du salarié sur les réalisations de l’année"
-            textPaint.set(setUnderlineTextOptions(activity.getColor(R.color.yellowPdf), Typeface.BOLD, 14F))
+            textPaint.set(setUnderlineTextOptions(activity.getColor(R.color.blue), Typeface.BOLD, 14F))
             drawText(secondInfo, 555, 20F, 390F,1.0F, false)
 
             //Second Rectangle
@@ -111,14 +111,8 @@ class SecondPagePdfUtil {
 
             PdfUtil.createPage(3)
 
-            //Start Second Page
-            createThirdPage(
-                PdfUtil.getCanvas(),
-                PdfUtil.getTextPaint(),
-                activity,
-                PdfUtil.getPdfDocument(),
-                PdfUtil.getPage()
-            )
+            //Start Third Page
+            createThirdPage(PdfUtil.getCanvas(), PdfUtil.getTextPaint(), activity, PdfUtil.getPdfDocument(), PdfUtil.getPage())
             //MailUtil.sendMailWithPdf(activity)
         }
 

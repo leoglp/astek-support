@@ -27,10 +27,15 @@ class OtherEvolutionActivity : AppCompatActivity() {
 
 
         nextArrow.setOnClickListener{
-            if(mobilityEditText.text.toString().isEmpty() || othersEvolutionEditText.text.toString().isEmpty()
-                || othersEditText.text.toString().isEmpty()) {
+            if(mobilityEditText.text.toString().isEmpty()) {
                 UIUtil.showMessage(it, this.getString(R.string.err_no_input))
             } else {
+                if(othersEvolutionEditText.text.toString().isEmpty()) {
+                    othersEvolutionEditText.setText("/")
+                }
+                if(othersEditText.text.toString().isEmpty()) {
+                    othersEditText.setText("/")
+                }
                 createOrUpdate()
                 UIUtil.goToNextPage(this, this.javaClass.simpleName)            }
         }

@@ -20,11 +20,12 @@ import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.footer
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.setTextOptions
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.setUnderlineTextOptions
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.writeInterviewPlan
+import com.astek.asteksupport.utils.pdf.SixthPagePdfUtil.Companion.createSixthPage
 import com.google.firebase.firestore.FirebaseFirestore
 
 
 @Suppress("DEPRECATION")
-class ThirdPagePdfUtil {
+class FifthPagePdfUtil {
 
     companion object {
 
@@ -42,7 +43,7 @@ class ThirdPagePdfUtil {
         private lateinit var activity: Activity
 
 
-        fun createThirdPage(
+        fun createFifthPage(
             canvasValue: Canvas, textPaintValue: TextPaint, activityValue: Activity,
             pdfDocumentValue: PdfDocument, pageValue: PdfDocument.Page
         ) {
@@ -53,235 +54,99 @@ class ThirdPagePdfUtil {
             pdfDocument = pdfDocumentValue
             page = pageValue
 
-            footer("3")
+            footer("5")
 
-            writeInterviewPlan()
+            writeInterviewPlan(2)
 
-            val firstTitle = "EVALUATION DES OBJECTIFS FIXES EAE ANNEE N-1"
+            val firstTitle = activity.getString(R.string.pdfTitlePage5)
             textPaint.set(setUnderlineTextOptions(activity.getColor(R.color.red), Typeface.BOLD, 14F))
             drawText(firstTitle, 555, 20F, 150F, 1.0F, false)
 
+            val infoText = activity.getString(R.string.futureTargetExplanation)
+            textPaint.set(setTextOptions(Color.BLACK, Typeface.ITALIC, 10F))
+            drawText(infoText, 555, 20F, 175F, 1.0F, false)
+
             //Title Left Rectangle
-            val leftTitle = "Rappel des objectifs"
-            var rect = Rect(80, 190, 298, 210)
+            val leftTitle = activity.getString(R.string.pdfTarget)
+            var rect = Rect(80, 210, 298, 230)
             canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.yellow)))
             canvas.drawRect(rect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 12F))
-            drawText(leftTitle, 218, 80F, 191F, 1.0F, true)
+            drawText(leftTitle, 218, 80F, 211F, 1.0F, true)
 
             //Title Right Rectangle
-            val rightTitle = "Résultats"
-            rect = Rect(298, 190, 515, 210)
+            val rightTitle = activity.getString(R.string.evaluationCriteria)
+            rect = Rect(298, 210, 515, 230)
             canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.yellow)))
             canvas.drawRect(rect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 12F))
-            drawText(rightTitle, 218, 298F, 191F, 1.0F, true)
+            drawText(rightTitle, 218, 298F, 211F, 1.0F, true)
 
-            //First Rectangles
-            retrieveFirstRectangleValue()
+            retrieveValue()
         }
 
-
-        private fun writeInFirstLeftRectangle(value: String) {
-            //First Left Rectangle
-            val rect = Rect(80, 210, 298, 300)
+        private fun writeInLeftRectangle(value: String , top: Int , bottom: Int , y: Float) {
+            val rect = Rect(80, top, 298, bottom)
             canvas.drawRect(rect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(value, 208, 85F, 215F, 1.3F, false)
+            drawText(value, 208, 85F, y, 1.3F, false)
         }
 
-        private fun writeInSecondLeftRectangle(value: String) {
-            //Second Left Rectangle
-            val rect = Rect(80, 300, 298, 390)
+        private fun writeInRightRectangle(value: String , top: Int , bottom: Int , y: Float) {
+            val rect = Rect(298, top, 515, bottom)
             canvas.drawRect(rect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(value, 208, 85F, 305F, 1.3F, false)
+            drawText(value, 208, 303F, y, 1.3F, false)
         }
 
-        private fun writeInThirdLeftRectangle(value: String) {
-            //Third Left Rectangle
-            val rect = Rect(80, 390, 298, 480)
-            canvas.drawRect(rect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(value, 208, 85F, 395F, 1.3F, false)
-        }
-
-        private fun writeInFirstRightRectangle(value: String) {
-            //First Right Rectangle
-            val rect = Rect(298, 210, 515, 300)
-            canvas.drawRect(rect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(value, 208, 303F, 215F, 1.3F, false)
-        }
-
-        private fun writeInSecondRightRectangle(value: String) {
-            //Second Right Rectangle
-            val rect = Rect(298, 300, 515, 390)
-            canvas.drawRect(rect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(value, 208, 303F, 305F, 1.3F, false)
-        }
-
-        private fun writeInThirdRightRectangle(value: String) {
-            //Third Right Rectangle
-            val rect = Rect(298, 390, 515, 480)
-            canvas.drawRect(rect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(value, 208, 303F, 395F, 1.3F, false)
-
-            writeSecondInfo()
-        }
-
-        private fun writeSecondInfo() {
-
-            //Title
-            var rect = Rect(80, 480, 515, 500)
-            canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.green)))
-            canvas.drawRect(rect, borderRectangleOptions())
-            textPaint.set(setUnderlineTextOptions(activity.getColor(R.color.red), Typeface.BOLD, 10F))
-            drawText(activity.getString(R.string.titleManagerAppreciation), 435, 80F, 481F, 1.0F, true)
-
-            //First Rectangle
-            rect = Rect(80, 500, 189, 520)
-            canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.yellow)))
-            canvas.drawRect(rect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 9F))
-            drawText(activity.getString(R.string.verySatisfying),109,80F,502F,1.0F,true)
-
-            //Second Rectangle
-            rect = Rect(189, 500, 298, 520)
-            canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.yellow)))
-            canvas.drawRect(rect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 9F))
-            drawText(activity.getString(R.string.satisfying),109,189F,502F,1.0F,true)
-
-            //Third Rectangle
-            rect = Rect(298, 500, 407, 520)
-            canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.yellow)))
-            canvas.drawRect(rect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 9F))
-            drawText(activity.getString(R.string.medium),109,298F,502F,1.0F,true)
-
-            //Fourth Rectangle
-            rect = Rect(407, 500, 515, 520)
-            canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.yellow)))
-            canvas.drawRect(rect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 9F))
-            drawText(activity.getString(R.string.insufficient),109,407F,502F,1.0F,true)
-
-            retrieveManagerEvaluationValue()
-        }
-
-        private fun fillRectangleValue(text: String) {
-            val firstRect = Rect(80, 520, 189, 540)
-            canvas.drawRect(firstRect, borderRectangleOptions())
-            val secondRect = Rect(189, 520, 298, 540)
-            canvas.drawRect(secondRect, borderRectangleOptions())
-            val thirdRect = Rect(298, 520, 407, 540)
-            canvas.drawRect(thirdRect, borderRectangleOptions())
-            val fourthRect = Rect(407, 520, 515, 540)
-            canvas.drawRect(fourthRect, borderRectangleOptions())
-
-            when(text) {
-                "Très Satisfaisant" -> canvas.drawRect(firstRect, fillRectangleOptions(Color.LTGRAY))
-                "Satisfaisant" -> canvas.drawRect(secondRect, fillRectangleOptions(Color.LTGRAY))
-                "Moyen" -> canvas.drawRect(thirdRect, fillRectangleOptions(Color.LTGRAY))
-                "Insuffisant" -> canvas.drawRect(fourthRect, fillRectangleOptions(Color.LTGRAY))
-            }
-
-            retrieveCommentaryValue()
 
 
-        }
-
-        private fun writeCommentary(text: String) {
-            textPaint.set(setUnderlineTextOptions(Color.BLACK, Typeface.BOLD, 14F))
-            drawText(activity.getString(R.string.commentary), 555, 20F, 560F, 1.0F, false)
-
-            val rect = Rect(20, 590, 580, 700)
-            canvas.drawRect(rect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(text, 555, 25F, 593F, 1.3F, false)
-
-            pdfDocument.finishPage(page)
-
-            PdfUtil.createPage(4)
-
-            //Start Fourth Page
-            createFourthPage(PdfUtil.getCanvas(), PdfUtil.getTextPaint(), activity, PdfUtil.getPdfDocument(), PdfUtil.getPage())
-        }
 
 
         /************************************* DataBase *******************************************/
-        private fun retrieveFirstRectangleValue() {
+        private fun retrieveValue() {
             db.collection("users").document(employeeDocumentId)
-                .collection("targetEvaluation")
+                .collection("futureTargetEvaluation")
                 .get()
                 .addOnSuccessListener { result ->
                     for (document in result) {
                         val target1 = "1 - " + document.get("target1").toString()
-                        writeInFirstLeftRectangle(target1)
+                        writeInLeftRectangle(target1,230,320,235F)
                         if (document.get("target2") != null) {
                             val target2 = "2 - " + document.get("target2").toString()
-                            writeInSecondLeftRectangle(target2)
+                            writeInLeftRectangle(target2,320,410,325F)
                         } else {
-                            writeInSecondLeftRectangle("2 - /")
+                            writeInLeftRectangle("2 - /",320,410,325F)
                         }
                         if (document.get("target3") != null) {
                             val target3 = "3 - " + document.get("target3").toString()
-                            writeInThirdLeftRectangle(target3)
+                            writeInLeftRectangle(target3,410,500,415F)
                         } else {
-                            writeInThirdLeftRectangle("3 - /")
+                            writeInLeftRectangle("3 - /",410,500,415F)
                         }
 
                         val result1 = document.get("result1").toString()
-                        writeInFirstRightRectangle(result1)
+                        writeInRightRectangle(result1,230,320,235F)
                         if (document.get("result2") != null) {
                             val result2 = document.get("result2").toString()
-                            writeInSecondRightRectangle(result2)
+                            writeInRightRectangle(result2,320,410,325F)
                         } else {
-                            writeInSecondRightRectangle("/")
+                            writeInRightRectangle("/",320,410,325F)
                         }
                         if (document.get("result3") != null) {
                             val result3 = document.get("result3").toString()
-                            writeInThirdRightRectangle(result3)
+                            writeInRightRectangle(result3,410,500,415F)
                         } else {
-                            writeInThirdRightRectangle("/")
+                            writeInRightRectangle("/",410,500,415F)
                         }
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Log.d(TAG, "Error getting documents.", exception)
-                }
-        }
 
+                        // finish the page
+                        pdfDocument.finishPage(page)
 
-        private fun retrieveManagerEvaluationValue() {
-            db.collection("users").document(employeeDocumentId)
-                .collection("performanceEvaluation")
-                .get()
-                .addOnSuccessListener { result ->
-                    for (document in result) {
-                        fillRectangleValue(document.get("performanceEvaluation").toString())
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Log.d(TAG, "Error getting documents.", exception)
-                }
-        }
+                        PdfUtil.createPage(6)
 
-        private fun retrieveCommentaryValue() {
-            db.collection("users").document(employeeDocumentId)
-                .collection("performanceEvaluation")
-                .get()
-                .addOnSuccessListener { result ->
-                    for (document in result) {
-                        if (document.get("commentary") != null) {
-                            val commentary = document.get("commentary").toString()
-                            writeCommentary(commentary)
-                        } else {
-                            writeCommentary("/")
-                        }
+                        //Start Fourth Page
+                        createSixthPage(PdfUtil.getCanvas(), PdfUtil.getTextPaint(), activity, PdfUtil.getPdfDocument(), PdfUtil.getPage())
                     }
                 }
                 .addOnFailureListener { exception ->

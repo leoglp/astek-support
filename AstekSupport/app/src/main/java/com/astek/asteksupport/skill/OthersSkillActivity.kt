@@ -134,7 +134,7 @@ class OthersSkillActivity : AppCompatActivity() {
         }
 
 
-        addValueInDataBase(skillEvaluation!!, "functionalSkillEvaluation")
+        addValueInDataBase(skillEvaluation!!, "othersSkillEvaluation")
     }
 
     private fun updateValueInDB(){
@@ -184,14 +184,14 @@ class OthersSkillActivity : AppCompatActivity() {
                 "numberTarget" to numberTarget.toString())
         }
 
-        updateValueInDataBase(skillEvaluation!!, "functionalSkillEvaluation", documentUpdateId)
+        updateValueInDataBase(skillEvaluation!!, "othersSkillEvaluation", documentUpdateId)
     }
 
     private fun retrieveData(){
         val db = FirebaseFirestore.getInstance()
 
         db.collection("users").document(AuthenticationUtil.employeeDocumentId)
-            .collection("functionalSkillEvaluation")
+            .collection("othersSkillEvaluation")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {

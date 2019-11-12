@@ -11,7 +11,6 @@ import android.text.TextPaint
 import android.util.Log
 import com.astek.asteksupport.R
 import com.astek.asteksupport.utils.AuthenticationUtil.Companion.employeeDocumentId
-import com.astek.asteksupport.utils.pdf.FourthPagePdfUtil.Companion.createFourthPage
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.borderRectangleOptions
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.closeDocument
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.drawText
@@ -21,10 +20,11 @@ import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.setTextOptions
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.setUnderlineTextOptions
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.writeInterviewPlan
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 
 @Suppress("DEPRECATION")
-class FifthPagePdfUtil {
+class SixthPagePdfUtil {
 
     companion object {
 
@@ -33,7 +33,7 @@ class FifthPagePdfUtil {
         private lateinit var pdfDocument: PdfDocument
         private lateinit var page: PdfDocument.Page
 
-        private const val TAG = "ThirdPdfPage"
+        private const val TAG = "SixthPdfPage"
 
         @SuppressLint("StaticFieldLeak")
         private val db = FirebaseFirestore.getInstance()
@@ -42,7 +42,7 @@ class FifthPagePdfUtil {
         private lateinit var activity: Activity
 
 
-        fun createFifthPage(
+        fun createSixthPage(
             canvasValue: Canvas, textPaintValue: TextPaint, activityValue: Activity,
             pdfDocumentValue: PdfDocument, pageValue: PdfDocument.Page
         ) {
@@ -53,99 +53,151 @@ class FifthPagePdfUtil {
             pdfDocument = pdfDocumentValue
             page = pageValue
 
-            footer("5")
+            footer("6")
 
-            writeInterviewPlan(2)
+            writeInterviewPlan(3)
 
-            val firstTitle = activity.getString(R.string.pdfTitlePage5)
-            textPaint.set(setUnderlineTextOptions(activity.getColor(R.color.red), Typeface.BOLD, 14F))
+            val firstTitle = activity.getString(R.string.titleEvolution).toUpperCase(Locale.ROOT)
+            textPaint.set(setUnderlineTextOptions(activity.getColor(R.color.blue), Typeface.BOLD, 14F))
             drawText(firstTitle, 555, 20F, 150F, 1.0F, false)
 
-            val infoText = activity.getString(R.string.futureTargetExplanation)
+            val infoText = activity.getString(R.string.pdfInfoPage6)
             textPaint.set(setTextOptions(Color.BLACK, Typeface.ITALIC, 10F))
             drawText(infoText, 555, 20F, 175F, 1.0F, false)
 
             //Title Left Rectangle
-            val leftTitle = activity.getString(R.string.pdfTarget)
-            var rect = Rect(80, 210, 298, 230)
+            val leftTitle = activity.getString(R.string.pdfProfessionalTarget)
+            var rect = Rect(20, 210, 207, 270)
             canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.yellow)))
             canvas.drawRect(rect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 12F))
-            drawText(leftTitle, 218, 80F, 211F, 1.0F, true)
+            drawText(leftTitle, 175, 26F, 233F, 1.0F, true)
+
+            //Title Middle Rectangle
+            val middleTitle = activity.getString(R.string.justificationEvolution)
+            rect = Rect(207, 210, 394, 270)
+            canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+            canvas.drawRect(rect, borderRectangleOptions())
+            textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 12F))
+            drawText(middleTitle, 185, 209F, 233F, 1.0F, true)
 
             //Title Right Rectangle
-            val rightTitle = activity.getString(R.string.evaluationCriteria)
-            rect = Rect(298, 210, 515, 230)
+            val rightTitle = activity.getString(R.string.meansEvolution)
+            rect = Rect(394, 210, 580, 270)
             canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.yellow)))
             canvas.drawRect(rect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 12F))
-            drawText(rightTitle, 218, 298F, 211F, 1.0F, true)
+            drawText(rightTitle, 175, 400F, 217F, 1.0F, true)
 
-            retrieveValue()
+            retrieveValue("shortEvolution",270,370,275F)
         }
 
         private fun writeInLeftRectangle(value: String , top: Int , bottom: Int , y: Float) {
-            val rect = Rect(80, top, 298, bottom)
+            val rect = Rect(20, top, 207, bottom)
             canvas.drawRect(rect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(value, 208, 85F, y, 1.3F, false)
+            drawText(value, 187, 25F, y, 1.3F, false)
+        }
+
+        private fun writeInMiddleRectangle(value: String , top: Int , bottom: Int , y: Float) {
+            val rect = Rect(207, top, 394, bottom)
+            canvas.drawRect(rect, borderRectangleOptions())
+            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
+            drawText(value, 187, 212F, y, 1.3F, false)
         }
 
         private fun writeInRightRectangle(value: String , top: Int , bottom: Int , y: Float) {
-            val rect = Rect(298, top, 515, bottom)
+            val rect = Rect(394, top, 580, bottom)
             canvas.drawRect(rect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(value, 208, 303F, y, 1.3F, false)
+            drawText(value, 187, 399F, y, 1.3F, false)
         }
 
+        private fun writeOthersInformationsTitle() {
+            var title = activity.getString(R.string.mobilityEvolution) + " : "
+            textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 10F))
+            drawText(title, 560, 20F, 575F, 1.3F, false)
 
+            title = activity.getString(R.string.otherEvolution) + " : "
+            textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 10F))
+            drawText(title, 560, 20F, 635F, 1.3F, false)
+
+            title = activity.getString(R.string.pdfOthersWishes) + " : "
+            textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 10F))
+            drawText(title, 560, 20F, 705F, 1.3F, false)
+
+            retrieveOthersValue()
+        }
+
+        private fun writeOthersInformations(value: String , y: Float) {
+            textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
+            drawText(value, 560, 20F, y, 1.3F, false)
+        }
 
 
 
         /************************************* DataBase *******************************************/
-        private fun retrieveValue() {
+        private fun retrieveValue(collectionName: String,
+                                  top: Int,
+                                  bottom: Int,
+                                  y: Float) {
             db.collection("users").document(employeeDocumentId)
-                .collection("futureTargetEvaluation")
+                .collection(collectionName)
                 .get()
                 .addOnSuccessListener { result ->
                     for (document in result) {
-                        val target1 = "1 - " + document.get("target1").toString()
-                        writeInLeftRectangle(target1,230,320,235F)
-                        if (document.get("target2") != null) {
-                            val target2 = "2 - " + document.get("target2").toString()
-                            writeInLeftRectangle(target2,320,410,325F)
-                        } else {
-                            writeInLeftRectangle("2 - /",320,410,325F)
-                        }
-                        if (document.get("target3") != null) {
-                            val target3 = "3 - " + document.get("target3").toString()
-                            writeInLeftRectangle(target3,410,500,415F)
-                        } else {
-                            writeInLeftRectangle("3 - /",410,500,415F)
-                        }
 
-                        val result1 = document.get("result1").toString()
-                        writeInRightRectangle(result1,230,320,235F)
-                        if (document.get("result2") != null) {
-                            val result2 = document.get("result2").toString()
-                            writeInRightRectangle(result2,320,410,325F)
-                        } else {
-                            writeInRightRectangle("/",320,410,325F)
+                        val justification = document.get("justification").toString()
+                        writeInMiddleRectangle(justification, top, bottom,  y)
+                        val means = document.get("means").toString()
+                        writeInRightRectangle(means, top, bottom, y)
+
+                        when(collectionName) {
+                            "shortEvolution" -> {
+                                val evolution = activity.getString(R.string.shortEvolution) + " : " +
+                                        document.get("evolution").toString()
+                                writeInLeftRectangle(evolution, top, bottom, y)
+                                retrieveValue("mediumEvolution",370,470,375F)
+                            }
+
+                            "mediumEvolution" -> {
+                                val evolution = activity.getString(R.string.mediumEvolution) + " : " +
+                                        document.get("evolution").toString()
+                                writeInLeftRectangle(evolution, top, bottom, y)
+                                retrieveValue("longEvolution",470,570,475F)
+                            }
+
+                            "longEvolution" -> {
+                                val evolution = activity.getString(R.string.longEvolution) + " : " +
+                                        document.get("evolution").toString()
+                                writeInLeftRectangle(evolution, top, bottom, y)
+                                writeOthersInformationsTitle()
+                            }
                         }
-                        if (document.get("result3") != null) {
-                            val result3 = document.get("result3").toString()
-                            writeInRightRectangle(result3,410,500,415F)
-                        } else {
-                            writeInRightRectangle("/",410,500,415F)
-                        }
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d(TAG, "Error getting documents.", exception)
+                }
+        }
+
+        private fun retrieveOthersValue() {
+            db.collection("users").document(employeeDocumentId)
+                .collection("othersEvolution")
+                .get()
+                .addOnSuccessListener { result ->
+                    for (document in result) {
+                        val mobility = document.get("mobility").toString()
+                        writeOthersInformations(mobility,587F)
+                        val othersEvolution = document.get("othersEvolution").toString()
+                        writeOthersInformations(othersEvolution,647F)
+                        val othersWishes = document.get("others").toString()
+                        writeOthersInformations(othersWishes,717F)
+
 
                         // finish the page
                         pdfDocument.finishPage(page)
 
-                        PdfUtil.createPage(6)
-
-                        //Start Fourth Page
-                        createFifthPage(PdfUtil.getCanvas(), PdfUtil.getTextPaint(), activity, PdfUtil.getPdfDocument(), PdfUtil.getPage())
                         closeDocument()
                     }
                 }

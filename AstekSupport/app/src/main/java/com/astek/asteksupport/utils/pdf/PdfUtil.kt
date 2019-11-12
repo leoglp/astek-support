@@ -140,7 +140,7 @@ class PdfUtil {
         }
 
 
-        fun writeInterviewPlan(){
+        fun writeInterviewPlan(planNumber: Int){
 
             val title = "PLAN DE L'ENTRETIEN"
             val info1 = "Bilan Annuel"
@@ -149,39 +149,66 @@ class PdfUtil {
             val info4 = "Formation"
 
             //Title Rectangle
-            var rect = Rect(80, 100, 515, 120)
+            val rect = Rect(80, 100, 515, 115)
             canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.green)))
             canvas.drawRect(rect, borderRectangleOptions())
-            textPaint.set(setTextOptions(Color.BLACK,Typeface.BOLD,12F))
-            drawText(title,435,80F,102F,1.0F,true)
+            textPaint.set(setTextOptions(Color.BLACK,Typeface.BOLD,11F))
+            drawText(title,435,80F,100F,1.0F,true)
+
+            val firstRect = Rect(80, 115, 189, 130)
+            val secondRect = Rect(189, 115, 298, 130)
+            val thirdRect = Rect(298, 115, 407, 130)
+            val fourthRect = Rect(407, 115, 515, 130)
+
+            when(planNumber) {
+                1 -> {
+                    canvas.drawRect(firstRect, fillRectangleOptions(activity.getColor(R.color.orange)))
+                    canvas.drawRect(secondRect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+                    canvas.drawRect(thirdRect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+                    canvas.drawRect(fourthRect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+                }
+                2 -> {
+                    canvas.drawRect(firstRect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+                    canvas.drawRect(secondRect, fillRectangleOptions(activity.getColor(R.color.orange)))
+                    canvas.drawRect(thirdRect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+                    canvas.drawRect(fourthRect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+                }
+                3 -> {
+                    canvas.drawRect(firstRect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+                    canvas.drawRect(secondRect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+                    canvas.drawRect(thirdRect, fillRectangleOptions(activity.getColor(R.color.orange)))
+                    canvas.drawRect(fourthRect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+                }
+                4 -> {
+                    canvas.drawRect(firstRect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+                    canvas.drawRect(secondRect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+                    canvas.drawRect(thirdRect, fillRectangleOptions(activity.getColor(R.color.yellow)))
+                    canvas.drawRect(fourthRect, fillRectangleOptions(activity.getColor(R.color.orange)))
+                }
+            }
+
 
             //First Rectangle
-            rect = Rect(80, 120, 189, 140)
-            canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.orange)))
-            canvas.drawRect(rect, borderRectangleOptions())
+            canvas.drawRect(firstRect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 10F))
-            drawText(info1,109,80F,122F,1.0F,true)
+            drawText(info1,109,80F,115F,1.0F,true)
 
             //Second Rectangle
-            rect = Rect(189, 120, 298, 140)
-            canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.yellow)))
-            canvas.drawRect(rect, borderRectangleOptions())
+            canvas.drawRect(secondRect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(info2,109,189F,122F,1.0F,true)
+            drawText(info2,109,189F,115F,1.0F,true)
 
             //Third Rectangle
-            rect = Rect(298, 120, 407, 140)
-            canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.yellow)))
-            canvas.drawRect(rect, borderRectangleOptions())
+            canvas.drawRect(thirdRect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(info3,109,298F,122F,1.0F,true)
+            drawText(info3,109,298F,115F,1.0F,true)
 
             //Fourth Rectangle
-            rect = Rect(407, 120, 515, 140)
-            canvas.drawRect(rect, fillRectangleOptions(activity.getColor(R.color.yellow)))
-            canvas.drawRect(rect, borderRectangleOptions())
+            canvas.drawRect(fourthRect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(info4,109,407F,122F,1.0F,true)
+            drawText(info4,109,407F,115F,1.0F,true)
+
+
         }
 
 
@@ -225,6 +252,26 @@ class PdfUtil {
                     staticLayout.draw(canvas,x,y)
                 }
             }
+        }
+
+
+        fun drawTextWithoutJustification(text: String, width: Int, x: Float, y: Float, spaceMultiline: Float, isCenter: Boolean){
+                if(isCenter) {
+                    val staticLayout = StaticLayout.Builder
+                        .obtain(text, 0, text.length, textPaint, width)
+                        .setLineSpacing(0.0f, spaceMultiline)
+                        .setAlignment(Layout.Alignment.ALIGN_CENTER)
+                        .build()
+
+                    staticLayout.draw(canvas,x,y)
+                } else {
+                    val staticLayout = StaticLayout.Builder
+                        .obtain(text, 0, text.length, textPaint, width)
+                        .setLineSpacing(0.0f, spaceMultiline)
+                        .build()
+
+                    staticLayout.draw(canvas,x,y)
+                }
         }
 
         fun borderRectangleOptions(): Paint {

@@ -52,7 +52,7 @@ class FirstPagePdfUtil {
 
             val infoFirstPage =
                 "Le dossier de compétences du salarié doit être mis à jour avant tout entretien annuel et envoyé au manager avant la date programmée de cet entretien.\n \n" +
-                        "Les informations en jaune doivent être remplies par le salarié avant l’entretien, le support devant être renvoyé au manager au moins 48h avant la date programmée de cet entretien.\n \n" +
+                        "Les informations en bleu doivent être remplies par le salarié avant l’entretien, le support devant être renvoyé au manager au moins 48h avant la date programmée de cet entretien.\n \n" +
                         "Les informations en rouge doivent être complétées par le manager pendant l’entretien.\n \n"
 
             val employeeIdentityTitle = "Identité du Salarié / Cadre de l’Entretien"
