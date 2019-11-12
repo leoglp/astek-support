@@ -66,13 +66,13 @@ class EighthPagePdfUtil {
             var rect = Rect(20, 130, 580, 280)
             canvas.drawRect(rect, borderRectangleOptions())
             textPaint.set(setTextOptions(Color.BLACK, Typeface.NORMAL, 10F))
-            drawText(value, 555, 25F, 170F, 1.3F, false)
+            drawText(value, 555, 25F, 130F, 1.3F, false)
 
             val employeeSignature = activity.getString(R.string.pdfEmployeeSignature)
             textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 13F))
             drawText(employeeSignature, 200, 20F, 290F,1.0F, false)
 
-            val managerSignature = activity.getString(R.string.pdfEmployeeSignature)
+            val managerSignature = activity.getString(R.string.pdfManagerSignature)
             textPaint.set(setTextOptions(Color.BLACK, Typeface.BOLD, 13F))
             drawText(managerSignature, 200, 398F, 290F,1.0F, false)
 

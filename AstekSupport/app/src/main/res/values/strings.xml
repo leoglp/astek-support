@@ -36,6 +36,8 @@
     <string name="yes">OUI</string>
     <string name="no">NON</string>
     <string name="others">Autres</string>
+    <string name="processing">Génération en cours…</string>
+    <string name="processingOk">Fichier généré avec succès</string>
 
     <!-- InterviewContext -->
     <string name="titleInterviewContext">Cadre de l\'entretien</string>

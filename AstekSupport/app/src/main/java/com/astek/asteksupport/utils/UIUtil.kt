@@ -24,6 +24,14 @@ class UIUtil {
             Snackbar.make(view, message, Snackbar.LENGTH_LONG).setAction("Action", null).show()
         }
 
+        fun showMessageIndefinite(view:View, message: String){
+            Snackbar.make(view, message, Snackbar.LENGTH_INDEFINITE).setAction("Action", null).show()
+        }
+
+        fun showMessageShort(view:View, message: String){
+            Snackbar.make(view, message, Snackbar.LENGTH_SHORT).setAction("Action", null).show()
+        }
+
         fun hideKeyboard(context: Context, view: View) {
             val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)

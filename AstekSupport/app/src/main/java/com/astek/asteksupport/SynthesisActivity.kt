@@ -20,6 +20,8 @@ class SynthesisActivity : AppCompatActivity() {
 
     private var updateValue = false
     private var documentUpdateId = ""
+    private var processing = false
+    private var view: View? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +57,9 @@ class SynthesisActivity : AppCompatActivity() {
         resultButton.setOnClickListener {
             if(isManager){
                 createOrUpdate()
+                UIUtil.showMessageIndefinite(it, this.getString(R.string.processing))
+                view = it
+                processing = true
                 createPdf(this)
             } else {
                 if(managerEmailEditText.text.toString().isEmpty()){
@@ -70,6 +75,10 @@ class SynthesisActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         retrieveData()
+
+        if(processing && view != null) {
+            UIUtil.showMessageShort(view!!, this.getString(R.string.processingOk))
+        }
     }
 
     private fun createValueInDB(){
