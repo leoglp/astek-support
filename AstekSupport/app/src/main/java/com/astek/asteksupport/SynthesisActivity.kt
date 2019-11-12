@@ -53,18 +53,16 @@ class SynthesisActivity : AppCompatActivity() {
 
 
         resultButton.setOnClickListener {
-            /*if(isManager){
+            if(isManager){
                 createOrUpdate()
                 createPdf(this)
             } else {
                 if(managerEmailEditText.text.toString().isEmpty()){
                     UIUtil.showMessage(it, this.getString(R.string.err_no_input))
                 } else {
-                    //createPdf(this)
                     sendMail(this,managerEmailEditText.text.toString())
                 }
-            }*/
-            createPdf(this)
+            }
         }
     }
 

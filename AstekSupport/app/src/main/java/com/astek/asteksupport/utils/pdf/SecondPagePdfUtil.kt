@@ -113,7 +113,6 @@ class SecondPagePdfUtil {
 
             //Start Third Page
             createThirdPage(PdfUtil.getCanvas(), PdfUtil.getTextPaint(), activity, PdfUtil.getPdfDocument(), PdfUtil.getPage())
-            //MailUtil.sendMailWithPdf(activity)
         }
 
 
