@@ -14,13 +14,7 @@ import com.astek.asteksupport.utils.UIUtil.Companion.backToHome
 import com.astek.asteksupport.utils.pdf.PdfUtil.Companion.createPdf
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_synthesis.*
-import kotlinx.android.synthetic.main.page_add_layout.*
 import kotlinx.android.synthetic.main.page_layout.*
-import kotlinx.android.synthetic.main.page_layout.backArrow
-import kotlinx.android.synthetic.main.page_layout.logout
-import kotlinx.android.synthetic.main.page_layout.nextArrow
-import kotlinx.android.synthetic.main.page_layout.pageNumber
-import kotlinx.android.synthetic.main.page_layout.settings
 
 class SynthesisActivity : AppCompatActivity() {
 
@@ -88,6 +82,7 @@ class SynthesisActivity : AppCompatActivity() {
 
         if(processing && view != null) {
             UIUtil.showMessageShort(view!!, this.getString(R.string.processingOk))
+            processing = false
         }
     }
 
