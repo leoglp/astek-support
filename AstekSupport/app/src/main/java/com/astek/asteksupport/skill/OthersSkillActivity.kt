@@ -14,11 +14,6 @@ import com.astek.asteksupport.utils.UIUtil.Companion.showMessage
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.multiple_skills_layout.*
 import kotlinx.android.synthetic.main.page_add_layout.*
-import kotlinx.android.synthetic.main.page_add_layout.backArrow
-import kotlinx.android.synthetic.main.page_add_layout.logout
-import kotlinx.android.synthetic.main.page_add_layout.nextArrow
-import kotlinx.android.synthetic.main.page_add_layout.pageNumber
-import kotlinx.android.synthetic.main.page_layout.*
 
 class OthersSkillActivity : AppCompatActivity() {
 
@@ -133,16 +128,26 @@ class OthersSkillActivity : AppCompatActivity() {
                 || improvementAndGainEditText1.text.toString().isEmpty()) {
                 showMessage(it, this.getString(R.string.err_no_input))
             } else {
-                createOrUpdate()
-                UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                if(managerGraduationEditText1.text.toString().toInt() in 1..4
+                    && employeeGraduationEditText1.text.toString().toInt() in 1..4) {
+                    createOrUpdate()
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                } else {
+                    showMessage(it, this.getString(R.string.err_graduation))
+                }
             }
         } else {
             if(employeeGraduationEditText1.text.toString().isEmpty()
                 || skillExampleEditText1.text.toString().isEmpty()) {
                 showMessage(it, this.getString(R.string.err_no_input))
             } else {
-                createOrUpdate()
-                UIUtil.goToNextPage(this, this.javaClass.simpleName)              }
+                if(employeeGraduationEditText1.text.toString().toInt() in 1..4) {
+                    createOrUpdate()
+                    UIUtil.goToNextPage(this, this.javaClass.simpleName)
+                } else {
+                    showMessage(it, this.getString(R.string.err_graduation))
+                }
+            }
         }
     }
 
