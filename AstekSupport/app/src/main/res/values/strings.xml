@@ -22,10 +22,15 @@
     <string name="diplom">Diplôme / Ecole</string>
     <string name="obtentionDate">Date d\'obtention</string>
     <string name="profilCreation">Créer le profil</string>
+    <string name="profilUpdate">Mettre à jour le profil</string>
+
 
     <!-- Manager -->
     <string name="salaryInformation">Veuillez saisir les informations du salarié :</string>
     <string name="validate">Valider</string>
+
+    <!-- Password Reinitialisation -->
+    <string name="mailButton">Réinitialiser le mot de passe</string>
 
     <!-- Show Indication -->
     <string name="authentication">Authentification…</string>
@@ -33,7 +38,7 @@
     <string name="err_no_input">Veuillez remplir tous les champs.</string>
     <string name="err_no_checked">Veuillez cocher une valeur.</string>
     <string name="err_graduation">La note doit être comprise entre 1 et 4.</string>
-
+    <string name="mail_send">Email envoyé avec succès</string>
     <string name="err_no_person">Aucune personne de ce nom n\'a été trouvée.</string>
     <string name="graduationInfo">1- Très Satisfaisant / 2 - Satisfaisant / 3 - Moyen / 4 – Insuffisant</string>
     <string name="yes">OUI</string>

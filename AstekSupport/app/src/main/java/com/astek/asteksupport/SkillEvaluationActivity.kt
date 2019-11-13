@@ -10,7 +10,13 @@ import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
 import com.astek.asteksupport.utils.UIUtil
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_skill_evaluation.*
+import kotlinx.android.synthetic.main.page_add_layout.*
 import kotlinx.android.synthetic.main.page_layout.*
+import kotlinx.android.synthetic.main.page_layout.backArrow
+import kotlinx.android.synthetic.main.page_layout.logout
+import kotlinx.android.synthetic.main.page_layout.nextArrow
+import kotlinx.android.synthetic.main.page_layout.pageNumber
+import kotlinx.android.synthetic.main.page_layout.settings
 
 class SkillEvaluationActivity : AppCompatActivity() {
 
@@ -55,6 +61,10 @@ class SkillEvaluationActivity : AppCompatActivity() {
 
         logout.setOnClickListener{
             UIUtil.backToHome(this)
+        }
+
+        settings.setOnClickListener {
+            UIUtil.updateProfilInfo(this)
         }
     }
 

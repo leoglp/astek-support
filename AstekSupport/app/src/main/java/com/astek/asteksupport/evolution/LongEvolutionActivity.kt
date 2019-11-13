@@ -10,7 +10,6 @@ import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
 import com.astek.asteksupport.utils.UIUtil
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.evolution_layout.*
-import kotlinx.android.synthetic.main.page_add_layout.*
 import kotlinx.android.synthetic.main.page_layout.*
 import kotlinx.android.synthetic.main.page_layout.backArrow
 import kotlinx.android.synthetic.main.page_layout.logout
@@ -48,6 +47,10 @@ class LongEvolutionActivity : AppCompatActivity() {
 
         logout.setOnClickListener{
             UIUtil.backToHome(this)
+        }
+
+        settings.setOnClickListener {
+            UIUtil.updateProfilInfo(this)
         }
     }
 

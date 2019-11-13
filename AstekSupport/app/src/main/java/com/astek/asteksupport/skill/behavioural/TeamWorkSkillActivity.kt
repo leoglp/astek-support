@@ -51,6 +51,10 @@ class TeamWorkSkillActivity : AppCompatActivity() {
         employeeGraduationInfo.setOnClickListener {
             showMessage(it,this.getString(R.string.graduationInfo))
         }
+
+        settings.setOnClickListener {
+            UIUtil.updateProfilInfo(this)
+        }
     }
 
     override fun onResume() {

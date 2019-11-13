@@ -11,6 +11,7 @@ import com.astek.asteksupport.utils.DataBaseUtil.Companion.updateValueInDataBase
 import com.astek.asteksupport.utils.UIUtil
 import com.astek.asteksupport.utils.UIUtil.Companion.backToHome
 import com.astek.asteksupport.utils.UIUtil.Companion.showMessage
+import com.astek.asteksupport.utils.UIUtil.Companion.updateProfilInfo
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_bilan_formation.*
 import kotlinx.android.synthetic.main.page_add_layout.*
@@ -49,6 +50,10 @@ class BilanFormationActivity : AppCompatActivity() {
 
         logout.setOnClickListener{
             backToHome(this)
+        }
+
+        settings.setOnClickListener {
+            updateProfilInfo(this)
         }
     }
 

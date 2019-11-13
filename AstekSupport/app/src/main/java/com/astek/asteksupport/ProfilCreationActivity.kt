@@ -28,7 +28,8 @@ class ProfilCreationActivity : AppCompatActivity() {
                 || functionEditText.text.toString().isEmpty()
                 || diplomEditText.text.toString().isEmpty()
                 || obtentionEditText.text.toString().isEmpty()
-                || mailCreationEditText.text.toString().isEmpty()) {
+                || mailCreationEditText.text.toString().isEmpty()
+                || passwordCreationEditText.text.toString().isEmpty()) {
 
                 UIUtil.showMessage(it, this.getString(R.string.err_no_input))
             } else {

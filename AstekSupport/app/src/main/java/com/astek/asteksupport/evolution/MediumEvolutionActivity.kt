@@ -44,6 +44,10 @@ class MediumEvolutionActivity : AppCompatActivity() {
         logout.setOnClickListener{
             UIUtil.backToHome(this)
         }
+
+        settings.setOnClickListener {
+            UIUtil.updateProfilInfo(this)
+        }
     }
 
     override fun onResume() {

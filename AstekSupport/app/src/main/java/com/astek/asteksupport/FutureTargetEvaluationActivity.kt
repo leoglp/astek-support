@@ -15,7 +15,6 @@ import kotlinx.android.synthetic.main.page_add_layout.backArrow
 import kotlinx.android.synthetic.main.page_add_layout.logout
 import kotlinx.android.synthetic.main.page_add_layout.nextArrow
 import kotlinx.android.synthetic.main.page_add_layout.pageNumber
-import kotlinx.android.synthetic.main.page_layout.*
 import kotlinx.android.synthetic.main.target_layout.*
 
 class FutureTargetEvaluationActivity : AppCompatActivity() {
@@ -96,6 +95,10 @@ class FutureTargetEvaluationActivity : AppCompatActivity() {
 
         deleteTarget.setOnClickListener {
             updateTargetView(false)
+        }
+
+        settings.setOnClickListener {
+            UIUtil.updateProfilInfo(this)
         }
 
 

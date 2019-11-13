@@ -49,6 +49,10 @@ class OtherEvolutionActivity : AppCompatActivity() {
         logout.setOnClickListener{
             backToHome(this)
         }
+
+        settings.setOnClickListener {
+            UIUtil.updateProfilInfo(this)
+        }
     }
 
 

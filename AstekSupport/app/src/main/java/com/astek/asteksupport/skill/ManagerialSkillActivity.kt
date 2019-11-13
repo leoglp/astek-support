@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.page_add_layout.backArrow
 import kotlinx.android.synthetic.main.page_add_layout.logout
 import kotlinx.android.synthetic.main.page_add_layout.nextArrow
 import kotlinx.android.synthetic.main.page_add_layout.pageNumber
-import kotlinx.android.synthetic.main.page_layout.*
 
 class ManagerialSkillActivity : AppCompatActivity() {
 
@@ -76,6 +75,10 @@ class ManagerialSkillActivity : AppCompatActivity() {
 
         employeeGraduationInfo.setOnClickListener {
             showMessage(it,this.getString(R.string.graduationInfo))
+        }
+
+        settings.setOnClickListener {
+            UIUtil.updateProfilInfo(this)
         }
     }
 

@@ -8,6 +8,7 @@ import com.astek.asteksupport.R
 import com.astek.asteksupport.utils.DataBaseUtil.Companion.readAndGoToPage
 import com.astek.asteksupport.utils.UIUtil.Companion.goToPage
 import com.astek.asteksupport.utils.UIUtil.Companion.showMessage
+import com.astek.asteksupport.utils.UIUtil.Companion.showMessageShort
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -85,6 +86,19 @@ class AuthenticationUtil {
                     showMessage(view,"Error: ${task.exception?.message}")
                 }
             }
+        }
+
+        fun reinitialisation(email: String , view: View , activity: Activity){
+            fbAuth
+                .sendPasswordResetEmail(email)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        showMessageShort(view,activity.getString(R.string.mail_send))
+                        UIUtil.backToHome(activity)
+                    } else {
+                        showMessage(view,"Error: ${task.exception?.message}")
+                    }
+                }
         }
 
     }

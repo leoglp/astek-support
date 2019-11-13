@@ -44,6 +44,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ProfilCreationActivity::class.java)
             startActivity(intent)
         }
+
+        forgetPasswordText.setOnClickListener{
+            val intent = Intent(this, PasswordReinitialisationActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

@@ -103,6 +103,11 @@ class UIUtil {
             return classArray.size.toString()
         }
 
+        fun updateProfilInfo(activity: Activity) {
+            val intent = Intent(activity,ProfilModificationActivity::class.java)
+            activity.startActivity(intent)
+        }
+
 
     }
 }

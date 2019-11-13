@@ -13,7 +13,13 @@ import com.astek.asteksupport.utils.UIUtil
 import com.astek.asteksupport.utils.UIUtil.Companion.showMessage
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.behaviour_skill_layout.*
+import kotlinx.android.synthetic.main.page_add_layout.*
 import kotlinx.android.synthetic.main.page_layout.*
+import kotlinx.android.synthetic.main.page_layout.backArrow
+import kotlinx.android.synthetic.main.page_layout.logout
+import kotlinx.android.synthetic.main.page_layout.nextArrow
+import kotlinx.android.synthetic.main.page_layout.pageNumber
+import kotlinx.android.synthetic.main.page_layout.settings
 
 class CreativitySkillActivity : AppCompatActivity() {
 
@@ -50,6 +56,10 @@ class CreativitySkillActivity : AppCompatActivity() {
 
         employeeGraduationInfo.setOnClickListener {
             showMessage(it,this.getString(R.string.graduationInfo))
+        }
+
+        settings.setOnClickListener {
+            UIUtil.updateProfilInfo(this)
         }
     }
 
